@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/logo4.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="css/submit.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <script src="https://kit.fontawesome.com/ffa1940001.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-image" style="background-image: url('img/grayskull.jpg'); background-repeat: no-repeat; background-size:cover;">
+
+
+    <div class="container col-md-4 mt-5 bg-white py-3 rounded">
+        <h2 class="text-center mb-4">Login</h2>
+
+        <div class="d-flex justify-content-center">
+
+            <form action="" method="GET" id="form" class="formContact" style="width: 80%;">
+
+
+                <!-- Grupo: Correo Electronico -->
+                <div class="formulario__grupo mb-3" id="grupo__user" form-group>
+                    <label for="user" class="formulario__label">Usuario</label>
+                    <div class="formulario__grupo-input">
+                        <input type="email" class="formulario__input form-control mb-2" name="user" id="user" placeholder="Ingrese su email">
+                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    </div>
+                    <p class="formulario__input-error my-2">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+                </div>
+                
+                <!-- Grupo: Contraseña -->
+                <div class="formulario__grupo mb-3" id="grupo__pass" form-group>
+                    <label for="correo" class="formulario__label">Contraseña</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text" class="formulario__input form-control mb-2" name="pass" id="pass" placeholder="Ingrese su contraseña">
+                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    </div>
+                    <p class="formulario__input-error">El usuario debe ser de 6 a 10 caracteres alfanuméricos y puede contener guion bajo.</p>
+                </div>
+                
+                <div class="text-center mt-3" form-group>
+                    <button type="submit" class="btn btn-primary mb-3" style="width: 100%;">Enviar</button>
+                </div>
+
+                <div class="text-center mb-2" form-group>
+                    <a id="usuario" class="btn btn-outline-success" style="width: 100%;" href="registrer.html">Registrarse</a>
+                </div>
+
+                <!--  <div class="text-center mt-3" form-group>
+                    <a class="btn btn-primary mb-3" style="width: 100%;" href="index.html">Volver</a>
+                </div> -->
+
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="js/submit.js"></script>
+</body>
+</html>

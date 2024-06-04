@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujos Retro</title>
+    <link rel="shortcut icon" href="img/retro.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/retro.css">
+    <link rel="stylesheet" href="css/dibujos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark fixed-top d-flex flex-wrap nav-header" data-bs-theme="dark">
+            <div class="container-fluid">
+
+                <img class="rounded-circle logo-header" src="img/logo4.png" alt="">
+                <a class="navbar-brand title-header" href="#">THE RETRO MACHINE</a>
+
+                <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav m-3 ">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <form class="d-flex">
+                    <input class="form-control m-2" type="search" placeholder="Tu Dibujo retro favorito"
+                        aria-label="Search" id="search">
+                    <a href="#" class="btn btn-success my-2" type="text">Buscar</a>
+                </form>
+            </div>
+        </nav>
+
+    </header>
+    <main>
+        <div class="dibujos-main d-flex flex-column" id="dibujos-main">
+
+            <!--  HE-MAN -->
+
+            <div class="container-fluid text-center bg-black rounded title p-3">
+            
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <img class="img-titulo" src="img/dibujos/He-Man/Masters_of_the_Universe_logo.webp" alt="">
+
+                    <span class="d-none" id="titulo-dibujo">He-Man Masters of the Universe</span>
+
+                    <button type="button" class="btn btn-danger boton-intro" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal1" onclick="introPlay()">
+                        Ver Intro
+                    </button>
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true" onclick="introPause()">
+                        <div class="modal-dialog d-flex justify-content-center">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                  <video controls loop class="dibujos-video">
+                                    <source src="video/He-Man Intro.mp4" type="video/mp4">
+                                  </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dibujos">
+                    <div class="col div-dibujo" id="div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/He-Man/He-Man9.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/He-Man/He-Man8.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/He-Man/He-Man.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/He-Man/He-Man5.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/He-Man/He-Man6.jpeg" alt="">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- Thundercats -->
+
+            <div class="container-fluid text-center bg-black p-3 my-4 rounded title">
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <img class="img-titulo" src="img/dibujos/Thundercats/titulo.jpg" alt="">
+
+                    <span class="d-none" id="titulo-dibujo">Thundercats</span>
+
+                    <button type="button" class="btn btn-danger boton-intro" data-bs-toggle="modal" data-bs-target="#exampleModal2" onclick="introPlay1()">
+                        Ver Intro
+                    </button>
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" onclick="introPause1()">
+                        <div class="modal-dialog d-flex justify-content-center">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <video controls loop class="dibujos-video">
+                                        <source src="video/Thundercats Intro .mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dibujos">
+                    <div class="col div-dibujo" id="div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Thundercats/thundercats6.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Thundercats/thundercats9.jpg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Thundercats/thundercats7.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Thundercats/thundercats5.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Thundercats/thundercats8.jpeg" alt="">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--  LOS SUPER CAMPEONES -->
+
+            <div class="container-fluid text-center bg-black p-3 my-3 rounded container-dibujos title">
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <img class="img-titulo" src="img/dibujos/Los Super Campeones/descarga (2).jpeg" alt="">
+
+                    <span class="d-none" id="titulo-dibujo">Los super campeones</span>
+
+                    <button type="button" class="btn btn-danger boton-intro" data-bs-toggle="modal" data-bs-target="#exampleModal3" onclick="introPlay2()">
+                        Ver Intro
+                    </button>
+                    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" onclick="introPause2()">
+                        <div class="modal-dialog d-flex justify-content-center">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <video controls loop class="dibujos-video">
+                                        <source src="video/SUPER CAMPEONES intro.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dibujos">
+                    <div class="col div-dibujo" id="div-dibujo">
+                        <img class="img-dibujos"
+                            src="img/dibujos/Los Super Campeones/Los Super Campeones2.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos"
+                            src="img/dibujos/Los Super Campeones/Los Super Campeones5.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos"
+                            src="img/dibujos/Los Super Campeones/Los Super Campeones.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos"
+                            src="img/dibujos/Los Super Campeones/Los Super Campeones7.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos"
+                            src="img/dibujos/Los Super Campeones/Los Super Campeones6.jpeg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!--  LOS PITUFOS -->
+
+            <div class="container-fluid text-center bg-black p-3 my-3 rounded container-dibujos title">
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <img class="img-titulo" src="img/dibujos/Los Pitufos/Logo_Los_Pitufos2.png" alt="">
+
+                    <span class="d-none" id="titulo-dibujo">Los Pitufos</span>
+
+                    <button type="button" class="btn btn-danger boton-intro" data-bs-toggle="modal" data-bs-target="#exampleModal4" onclick="introPlay3()">
+                        Ver Intro
+                    </button>
+                    <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" onclick="introPause3()">
+                        <div class="modal-dialog d-flex justify-content-center">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <video controls loop class="dibujos-video">
+                                        <source src="video/Los Pitufos Intro.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dibujos">
+                    <div class="col div-dibujo" id="div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Los Pitufos/lospitufos.jpg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Los Pitufos/lospitufos4.webp" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Los Pitufos/lospitufos5.jpeg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Los Pitufos/lospitufos3.jpg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Los Pitufos/lospitufos6.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!--  Mazinger Z -->
+
+            <div class="container-fluid text-center bg-black p-3 my-3 rounded container-dibujos title">
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <img class="img-titulo" src="img/dibujos/Mazinger Z/logo.png" alt="">
+
+                    <span class="d-none" id="titulo-dibujo">Mazinger Z</span>
+
+                    <button type="button" class="btn btn-danger boton-intro" data-bs-toggle="modal" data-bs-target="#exampleModal5" onclick="introPlay4()">
+                        Ver Intro
+                    </button>
+                    <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" onclick="introPause4()">
+                        <div class="modal-dialog d-flex justify-content-center">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <video controls loop class="dibujos-video">
+                                        <source src="video/Mazinger Z Intro Latino.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dibujos">
+                    <div class="col div-dibujo" id="div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Mazinger Z/mazignerz.jpg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Mazinger Z/doctor-infierno.jpg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Mazinger Z/mazignerz2.jpg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Mazinger Z/baron_ashler.jpg" alt="">
+                    </div>
+                    <div class="col div-dibujo">
+                        <img class="img-dibujos" src="img/dibujos/Mazinger Z/Robotmalo.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="js/buscador.js"></script>
+
+</body>
+
+</html>
