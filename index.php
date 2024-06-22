@@ -1,22 +1,25 @@
+<?php include("db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <title>The Retro Machine</title>
     <link rel="shortcut icon" href="img/retro.ico" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <script src="https://kit.fontawesome.com/ffa1940001.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/retro.css">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/retro.css">
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
@@ -34,23 +37,25 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav d-flex justify-content-center align-items-center">
-                        <li class="nav-item"><a class="nav-link active btn-lg ms-2 boton-api" aria-current="page" href="tmdb.html">API</a>
+                    <ul class="navbar-nav ">
+                        <li class="nav-item"><a class="nav-link active btn-lg ms-2 boton-api" aria-current="page"
+                                href="tmdb.html">API</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="peliculas.html">Peliculas</a>
+                            <a class="nav-link active inicio" aria-current="page" href="peliculas.html">Peliculas</a>
                         </li>
                         <li>
-                            <a class="nav-link active" aria-current="page" href="dibujos.html">Dibujos</a>
+                            <a class="nav-link active inicio" aria-current="page" href="dibujos.html">Dibujos</a>
                         </li>
                         <li>
-                            <a class="nav-link active" aria-current="page" href="videojuegos.html">Videojuegos</a>
-                        </li>
-                        <li>
-                            <a class="nav-link active" aria-current="page" href="formulario.php">Formulario</a>
+                            <a class="nav-link active inicio" aria-current="page"
+                                href="videojuegos.html">Videojuegos</a>
                         </li>
                         <li class="nav-item"><a class="nav-link active text-black btn-lg ms-2 color-login"
                                 aria-current="page" href="login.html">Login</a>
+                        </li>
+                        <li class="ms-3">
+                            <a class="btn btn-danger" href="ProductosCRUD/administrar.php" role="button">Admin</a>
                         </li>
                     </ul>
                 </div>
@@ -96,7 +101,7 @@
         </div>
 
 
-        <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist">
+        <ul class="nav nav-pills d-flex justify-content-center mt-5" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
                     type="button" role="tab" aria-controls="pills-home" aria-selected="true"
@@ -114,6 +119,11 @@
                     <h2 class="d-inline mi_carrito ">Mi Carrito</h2>
                 </button>
             </li>
+
+            <!--  <li class="mt-2 ms-4">
+                <a class="btn btn-danger" href="administrar.php" role="button">Panel Administrador</a>
+            </li> -->
+
         </ul>
 
         <div class="tab-content" id="pills-tabContent">
@@ -126,114 +136,30 @@
 
                     <div class="d-flex flex-wrap justify-content-center gap-4">
 
+                        <?php
+          $query = "SELECT * FROM productos";
+          $result_tasks = mysqli_query($conn, $query);    
+
+          while($row = mysqli_fetch_assoc($result_tasks)) { ?>
+
                         <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/He-man muñeco retro.webp"
-                                alt="Card image cap">
+
+                            <img class="card-img-top card-img" src="<?php echo $row['imagen']; ?>" alt="Card image cap">
                             <div class="card-body">
-                                <p class="card-title"><b>He-Man Original Mattel</b></p>
-                                <p class="card-price m-2">$<span class="precio">95576</span></p>
-                                <button class="btn btn-warning trailer button" data-id="1">Añadir al Carrito</button>
+                                <p class="card-title"><b>
+                                        <?php echo $row['descripcion']; ?>
+                                    </b></p>
+                                <p class="card-price m-2">$<span class="precio">
+                                        <?php echo $row['precio']; ?>
+                                    </span></p>
+                                <button class="btn btn-warning trailer button"
+                                    data-id="<?php echo $row['id_productos']; ?>">Añadir al Carrito</button>
                             </div>
                         </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Skeletor muñeco retro.webp"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Skeletor Original Mattel</b></p>
-                                <p class="card-price m-2">$<span class="precio">75468</span></p>
-                                <button class="btn btn-warning trailer button" data-id="2">Añadir al Carrito</button>
-                            </div>
-                        </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Man at arms muñeco retro.webp"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Man at arms Original Mattel</b></p>
-                                <p class="card-price m-2">$<span class="precio">65128</span></p>
-                                <button class="btn btn-warning trailer button" data-id="3">Añadir al Carrito</button>
-                            </div>
-                        </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Mer man muñeco retro.webp"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Mer man Original Mattel</b></p>
-                                <p class="card-price m-2">$<span class="precio">82100</span></p>
-                                <button class="btn btn-warning trailer button" data-id="4">Añadir al Carrito</button>
-                            </div>
-                        </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Lion-o muñeco retro.webp"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Lion-o Original Super-7</b></p>
-                                <p class="card-price m-2">$<span class="precio">100900</span></p>
-                                <button class="btn btn-warning trailer button" data-id="5">Añadir al Carrito</button>
-                            </div>
-                        </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Panthro muñeco retro.webp"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Panthro Original Super-7</b></p>
-                                <p class="card-price m-2">$<span class="precio">92100</span></p>
-                                <button class="btn btn-warning trailer button" data-id="6">Añadir al Carrito</button>
-                            </div>
-                        </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Tygro muñeco retro.webp"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Tygro Original Super-7</b></p>
-                                <p class="card-price m-2">$<span class="precio">108100</span></p>
-                                <button class="btn btn-warning trailer button" data-id="7">Añadir al Carrito</button>
-                            </div>
-                        </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Mumm-ra muñeco retro.webp"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Mumm-ra Original Super-7</b></p>
-                                <p class="card-price m-2">$<span class="precio">99100</span></p>
-                                <button class="btn btn-warning trailer button" data-id="8">Añadir al Carrito</button>
-                            </div>
-                        </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Marty Mcfly muñeco retro.webp"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Marty Mcfly Original</b></p>
-                                <p class="card-price m-2">$<span class="precio">95500</span></p>
-                                <button class="btn btn-warning trailer button" data-id="9">Añadir al Carrito</button>
-                            </div>
-                        </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Doc Brown muñeco retro.webp"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Doc Brown Original</b></p>
-                                <p class="card-price m-2">$<span class="precio">99925</span></p>
-                                <button class="btn btn-warning trailer button" data-id="10">Añadir al Carrito</button>
-                            </div>
-                        </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Delorean auto retro.png"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Delorean Original</b></p>
-                                <p class="card-price m-2">$<span class="precio">79590</span></p>
-                                <button class="btn btn-warning trailer button" data-id="11">Añadir al Carrito</button>
-                            </div>
-                        </div>
-                        <div class="card text-center title" style="width:17rem;">
-                            <img class="card-img-top card-img" src="img/Productos/Circuito del tiempo retro.png"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-title"><b>Circuitos Del Tiempo Original</b></p>
-                                <p class="card-price m-2">$<span class="precio">40100</span></p>
-                                <button class="btn btn-warning trailer button" data-id="12">Añadir al Carrito</button>
-                            </div>
-                        </div>
+
+                        <?php } ?>
+
+
                     </div>
                 </div>
             </div>
@@ -244,7 +170,7 @@
                     <span>Su carrito está vació. Ir a Nuestros Productos!</span>
                 </div>
 
-                <div class="carrito-vacio table-responsive">
+                <div class="carrito-vacio">
                     <table class="table table-dark table-hover container">
                         <thead>
                             <tr class="text-primary">
@@ -357,13 +283,13 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 
     <script src="js/carrito.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+    AOS.init();
     </script>
 </body>
 

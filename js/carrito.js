@@ -76,7 +76,7 @@ function renderCarrito() {
             </td>
             <td class="table__price"><p>${item.precio}</p></td>
             <td class="table__cantidad">
-              <input type="number" min="1" value=${item.cantidad} class="input__elemento">
+              <input type="text" min="1" value=${item.cantidad} class="input__elemento" readonly>
               <button class="delete btn btn-danger">x</button>
             </td>
     
@@ -121,12 +121,6 @@ function removeItemCarrito(e) {
     }
   }
 
-  /*  const alert = document.querySelector('.remove')
- 
-   setTimeout(function () {
-     alert.classList.add('remove')
-   }, 2000)
-   alert.classList.remove('remove') */
 
   tr.remove()
   countProduct--;
@@ -151,6 +145,7 @@ function sumaCantidad(e) {
 function addLocalStorage() {
   localStorage.setItem('carrito', JSON.stringify(carrito))
   localStorage.setItem('count-product', countProduct)
+  
 
 }
 

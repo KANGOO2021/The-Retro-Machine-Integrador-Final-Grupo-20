@@ -14,7 +14,7 @@
     src: url(/fonts/Silkscreen/Silkscreen-Bold.ttf);
 }
 
- 
+
 
 
 @media (max-width: 2000px) {
@@ -22,108 +22,108 @@
     body {
         overflow-x: hidden;
     }
-    
-     /* scrollbar */
-    
-     /* width */
-     ::-webkit-scrollbar {
-         width: 10px;
-     }
-    
-     /* Track */
-     ::-webkit-scrollbar-track {
-         background: rgb(23, 23, 23);
-     }
-    
-     /* Handle */
-     ::-webkit-scrollbar-thumb {
-         background: #d3d3d3b2;
-         border-radius: 5px;
-     }
-    
-     /* Handle on hover */
-     ::-webkit-scrollbar-thumb:hover {
-         background: #FFB300;
-     }
-    
+
+    /* scrollbar */
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: rgb(23, 23, 23);
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #d3d3d3b2;
+        border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #FFB300;
+    }
+
     /* header */
-    
+
     .logo-header {
         width: 60px;
         margin-right: 40px;
     }
-    
+
     .title-header {
         font-size: 50px;
         font-family: hunk;
     }
-    
+
     .nav-header {
         padding: 0px;
     }
-    
+
     .color-login {
         background-color: #FFB300;
         border-radius: 50%;
     }
-    
+
     .nav-link:hover {
         text-decoration: underline;
     }
-    
-    .boton-api{
+
+    .boton-api {
         background-color: #ca1b0f;
         border-radius: 50%;
-        margin-right: 10px ;
+        margin-right: 10px;
         color: rgb(0, 0, 0) !important;
         font-weight: 500;
     }
-    
-    
+
+
     /*Carrousel*/
-    
+
     .carousel-inner img {
         width: 100%;
         height: 500px;
         margin-top: 85px;
     }
-    
+
     /*Productos*/
-    
+
     .mi_carrito {
         font-size: 25px;
         color: black;
         margin-left: 20px;
     }
-    
+
     .mi_carrito:hover {
         color: red;
     }
-    
-    .nav-pills{
-        margin-top:3rem;
+
+    .nav-pills {
+        margin-top: 3rem;
     }
-    
+
     .productos-titulo {
         font-family: "retro", sans-serif;
         margin-bottom: 30px;
     }
-    
+
     .productos-titulo:hover {
         text-decoration: underline;
     }
-    
-    
+
+
     .index-main {
         font-family: Arial, Helvetica, sans-serif;
     }
-    
+
     .card {
         position: relative;
         height: 480px;
-    
+
     }
-    
+
     .card-img {
         width: 250px;
         position: absolute;
@@ -132,7 +132,7 @@
         left: 10px;
         right: 10px;
     }
-    
+
     .card-title {
         position: absolute;
         top: 370px;
@@ -144,75 +144,87 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    
+
     .card-price {
         position: absolute;
         top: 390px;
         left: 10px;
         right: 10px;
     }
-    
+
     .trailer {
         position: absolute;
         top: 425px;
         left: 20px;
         right: 20px;
     }
-    
+
+    /* Panel administrador */
+
+    .foto-listado {
+        width: 80px;
+        height: 100px;
+
+    }
+
+    .modal-eliminar {
+        height: 140px !important;
+    }
+
     /* Footer */
-    
+
     footer div a {
         text-decoration: none;
         color: black;
     }
-    
+
     footer div a:hover {
         text-decoration: underline;
     }
-    
+
     footer div i {
         margin-right: 5px;
     }
-    
+
     .modal-content {
         width: 640px;
         height: 450px;
     }
-    
+
     .ubicacion:hover {
         color: red;
     }
-    
+
     .img-ubicacion {
         width: 100%;
         height: 350px;
     }
-    
+
     .fa-brands {
         margin-right: 10px;
     }
-    
-    
+
+
     /* Carrito */
-    
-    
+
+
     .carrito {
         max-width: 1000px;
         margin: 0 auto;
         width: 100%;
     }
-    
+
     .table__productos {
         display: flex;
     }
-    
+
     .table__productos>img {
         width: 150px;
         height: 200px;
         border-radius: 6px;
         margin-right: 20px;
     }
-    
+
     .table__cantidad>input {
         width: 40px;
         border: none;
@@ -222,18 +234,18 @@
         margin-right: 30px;
         margin-bottom: 20px;
     }
-    
+
     .hide,
     .remove {
         display: none;
     }
-    
+
     .hidden {
         display: none;
     }
-    
+
     .carrito-productos {
-    
+
         width: 90%;
         margin: 0 auto;
         text-align: center;
@@ -259,28 +271,28 @@
     /* Track */
     ::-webkit-scrollbar-track {
         background: rgb(23, 23, 23);
-        
+
     }
 
     /* Handle */
     ::-webkit-scrollbar-thumb {
         background: #d3d3d3b2;
         border-radius: 5px;
-        
+
     }
 
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
         background: #FFB300;
-        
+
     }
 
-    
+
     .navbar-toggler:focus {
         border: 0 !important;
         box-shadow: none !important;
     }
-    
+
     .navbar-toggler {
         border: 0 !important;
     }
@@ -296,7 +308,7 @@
     .title-header {
         font-size: 30px;
         font-family: hunk;
-        
+
     }
 
     .nav-header {
@@ -309,13 +321,13 @@
         padding: 0px 10px;
         margin-bottom: 10px;
     }
-    
+
     .boton-api {
         background-color: #ca1b0f;
         border-radius: 5%;
         padding: 0px 10px;
         color: rgb(0, 0, 0) !important;
-     
+
     }
 
 
@@ -325,7 +337,7 @@
         width: 100%;
         height: 300px;
         margin-top: 50px;
-       
+
     }
 
     /*Productos*/
@@ -342,10 +354,10 @@
 
 
     .productos-titulo {
-        font-family: "retro", sans-serif; 
+        font-family: "retro", sans-serif;
         margin-bottom: 0px;
     }
-    
+
     .nav-pills {
         margin: 1rem;
     }
@@ -484,8 +496,8 @@
         font-size: 1.5rem;
         font-weight: 600;
     }
-    
-    .carrito-vacio{
+
+    .carrito-vacio {
         width: 90%;
         margin-left: auto;
         margin-right: auto;
