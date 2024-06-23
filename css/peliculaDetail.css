@@ -1,0 +1,12 @@
+main{
+  margin-top: 50px;
+  padding-top: 50px;
+}
+
+.encabezado{
+  padding: 20px;
+  margin: 20px;
+  justify-content: center;
+  text-align: center;
+}
+
