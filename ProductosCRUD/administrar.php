@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro Machine - Stock de Productos</title>
 
-    <link rel="shortcut icon" href="img/retro.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/retro.ico" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -23,7 +23,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark fixed-top d-flex nav-header" data-bs-theme="dark">
             <div class="container-fluid">
 
-                <img class="rounded-circle logo-header" src="img/logo4.png" alt="">
+                <img class="rounded-circle logo-header" src="../img/logo4.png" alt="">
                 <a class="navbar-brand title-header" href="#">THE RETRO MACHINE</a>
 
                 <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse"
@@ -40,7 +40,7 @@
                             <a class="nav-link active" aria-current="page" href="administrar.php">Productos</a>
                         </li>
                         <li>
-                            <a class="nav-link active" aria-current="page" href="../peliculas.html">Películas</a>
+                            <a class="nav-link active" aria-current="page" href="../PeliculasCRUD/peliculasDetail.php">Películas</a>
                         </li>
 
                         <li>
