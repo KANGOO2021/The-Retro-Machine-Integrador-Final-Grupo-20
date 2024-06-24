@@ -1,4 +1,5 @@
 <?php include("../db.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +41,7 @@
                             <a class="nav-link active" aria-current="page" href="administrar.php">Productos</a>
                         </li>
                         <li>
-                            <a class="nav-link active" aria-current="page" href="../PeliculasCRUD/peliculasDetail.php">Películas</a>
+                            <a class="nav-link active" aria-current="page" href="../PeliculasCRUD/moviesAdmin.php">Películas</a>
                         </li>
 
                         <li>

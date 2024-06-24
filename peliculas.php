@@ -1,18 +1,7 @@
 <?php
 
-include('../db.php');
+include('db.php');
 
-
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-    $sql = "DELETE FROM movies WHERE id_movie=$id";
-
-    if ($conn->query($sql) === TRUE) {
-        header("peliculasDetail: index.php");
-    } else {
-        echo "Error: " . $sql . "<br>" . $conexion->error;
-    }
-}
 ?>
 
 
@@ -23,11 +12,11 @@ if (isset($_GET['delete'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peliculas Retro</title>
-    <link rel="shortcut icon" href="../img/retro.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/retro.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/retro.css">
-    <link rel="stylesheet" href="../css/peliculas.css">
+    <link rel="stylesheet" href="css/retro.css">
+    <link rel="stylesheet" href="css/peliculas.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
@@ -49,7 +38,7 @@ if (isset($_GET['delete'])) {
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav m-3 ">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../index.php">Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                         </li>
 
                     </ul>
@@ -66,10 +55,10 @@ if (isset($_GET['delete'])) {
         <div class="peliculas-main d-flex flex-wrap justify-content-center" id="peliculas-main">
         <?php $pelis= $conn->query("SELECT * FROM movies"); 
                             $datos = $pelis->fetch_all(MYSQLI_ASSOC);
-                            foreach ($datos as $dato){ ?>
+                            foreach ($datos as $dato){ 
+                            $rutaImagen = str_replace('../', '', $dato['imagen']);    ?>
             <div class="card text-center title" style="width:17rem;">
-                <img class="card-img-top card-img" src='<?php echo $dato['imagen'];?>' alt="Card image cap">
-
+                <img class="card-img-top card-img" src='<?php echo $rutaImagen;?>' alt="Card image cap">
                 <div class="card-body">
                     <p class="card-title"><b><?php echo $dato['nombre'];?></b></p>
                     <span class="card-text m-2"><?php echo $dato['año'];?></span>

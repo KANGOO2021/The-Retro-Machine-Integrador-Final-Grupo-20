@@ -48,7 +48,7 @@ if (isset($_POST['update'])) {
 
 </head>
 
-<body class="bg-image" style="background-image: url('../img/edit2.webp');
+<body class="bg-image" style="background-image: url('../img/posters80.jpg');
  	background-repeat: no-repeat; background-size: cover;">
 
     <div class="container mt-1 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">

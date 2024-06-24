@@ -42,7 +42,7 @@
                                 href="tmdb.html">API</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active inicio" aria-current="page" href="./PeliculasCRUD/peliculas.php">Peliculas</a>
+                            <a class="nav-link active inicio" aria-current="page" href="peliculas.php">Peliculas</a>
                         </li>
                         <li>
                             <a class="nav-link active inicio" aria-current="page" href="dibujos.html">Dibujos</a>
