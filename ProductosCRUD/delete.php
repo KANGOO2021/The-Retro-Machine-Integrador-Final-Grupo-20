@@ -2,11 +2,11 @@
 
 include("../db.php");
 
-if(isset($_GET['id'])) {
+if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $query = "DELETE FROM productos WHERE id_productos = $id";
   $result = mysqli_query($conn, $query);
-  if(!$result) {
+  if (!$result) {
     die("Query Failed.");
   }
 

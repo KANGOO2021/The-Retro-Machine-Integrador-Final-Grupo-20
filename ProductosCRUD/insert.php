@@ -1,28 +1,55 @@
 <?php
-    
-    include('../db.php');
- 
+
+include('../db.php');
+
 if (isset($_POST['insert-product'])) {
- 
-  $descripcion = $_POST['txtDescripcion'];
-  $precio = $_POST['txtPrecio'];
-  $cantidad = $_POST['txtStock'];
-  $imagen = $_POST['txtImagen'];
 
-      
+    $descripcion = $_POST['txtDescripcion'];
+    $precio = $_POST['txtPrecio'];
+    $cantidad = $_POST['txtStock'];
 
-  $query = "INSERT INTO productos (descripcion, precio, cantidad, imagen) VALUES ('$descripcion', '$precio','$cantidad', '$imagen')";
-  
-  $result = mysqli_query($conn, $query);
-  if(!$result) {
-    die("Query Failed.");
-  }
+    $imagen = $_FILES['txtImagen']["tmp_name"];
+    $nombreImagen = $_FILES['txtImagen']["name"];
+    $tipoImagen = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));
+    //$sizeImagen = $_FILES['txtImagen']["size"];
+    $directorio = "../img/Productos/Producto";
 
-  $_SESSION['message'] = 'Producto agregado exitosamente';
-  $_SESSION['message_type'] = 'success';
-  header('Location: administrar.php');
 
-}
+    if ($tipoImagen == "jpg" or $tipoImagen == "jpeg" or $tipoImagen == "png" or $tipoImagen == "webp") {
+
+        $query = "INSERT INTO productos (descripcion, precio, cantidad, imagen) VALUES ('$descripcion', '$precio','$cantidad', '')";
+
+        $result = mysqli_query($conn, $query);
+        if (!$result) {
+            die("Query Failed.");
+        }
+
+        $idRegistro = $conn->insert_id;
+        $ruta = $directorio.$idRegistro.".".$tipoImagen;
+
+        $actualizarImagen = $conn->query("update productos set imagen='$ruta' where id_productos=$idRegistro");
+
+        if (move_uploaded_file($imagen, $ruta)) {
+            $_SESSION['message'] = 'Producto agregado exitosamente';
+            $_SESSION['message_type'] = 'success';
+            header('Location: administrar.php');
+        } else {
+            $_SESSION['message'] = 'Error al agregar producto';
+            $_SESSION['message_type'] = 'danger';
+            header('Location: administrar.php');
+        }
+    } else {
+        $_SESSION['message'] = 'No se acepta ese formato de imagen';
+        $_SESSION['message_type'] = 'danger';
+    } ?>
+
+<script>
+history.replaceState(null, null, location.pathname)
+</script>
+
+
+<?php }
+
 ?>
 
 
@@ -47,24 +74,18 @@ if (isset($_POST['insert-product'])) {
 
     <div class=" container mt-3 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">
         <h2 class="text-center mb-4">Nuevo Producto</h2>
+        <?php if (isset($_SESSION['message'])) { ?>
+        <div class="p-2 alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
+            <?= $_SESSION['message'] ?>
+            <button type="button" class="btn-close pt-1" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php } ?>
 
-        <form action="insert.php" method="POST" class="formContact">
+        <form action="insert.php" method="POST" class="formContact" enctype="multipart/form-data">
 
             <div class="mb-3" form-group>
                 <label>Imagen</label>
-                <div class="d-flex flex-sm-row flex-column justify-content-between align-items-center mb-1">
-                    <input type="file" class="form-control" id="imagen" style="width: 100%" required>
-                    <button class="btn btn-success" type="button" id="boton" style="width: 100%">Agregar
-                        imagen</button>
-                </div class="mt-1">
-                <input type=" text" class="form-control" name="txtImagen" placeholder="Espere url de la imagen"
-                    id=up-img required>
-
-                <div class="progress mt-1">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%"
-                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id="progress-bar"></div>
-                </div>
-                <!-- <div><progress id="progress-bar" max="100" value="0" style="width: 100%"></progress></div> -->
+                <input type="file" class="form-control" name="txtImagen" id="imagen" style="width: 100%" required>
 
             </div>
 
@@ -94,9 +115,6 @@ if (isset($_POST['insert-product'])) {
             <a class="text-black" href="administrar.php">Volver al Stock</a>
         </h5>
     </div>
-
-
-    <script type="module" src="../js/uploadImages.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

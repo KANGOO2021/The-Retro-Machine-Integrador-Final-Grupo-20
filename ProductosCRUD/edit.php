@@ -2,35 +2,65 @@
 include("../db.php");
 
 
-if  (isset($_GET['id'])) {
-  $id = $_GET['id'];
-  $query = "SELECT * FROM productos WHERE id_productos=$id";
-  $result = mysqli_query($conn, $query);
-  if (mysqli_num_rows($result) == 1) {
-    $row = mysqli_fetch_array($result);
- 
-  }
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $query = "SELECT * FROM productos WHERE id_productos=$id";
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_array($result);
+    }
 }
 
 
 if (isset($_POST['update'])) {
-  $id = $_GET['id'];
-  
-  $descripcion = $_POST['txtDescripcion'];
-  $precio = $_POST['txtPrecio'];
-  $imagen = $_POST['txtImagen'];
-  $cantidad = $_POST['txtStock'];
 
-  $query = "UPDATE productos set descripcion = '$descripcion', precio = '$precio', cantidad = '$cantidad', imagen = '$imagen' WHERE id_productos=$id";
-  mysqli_query($conn, $query);
-  
-  $_SESSION['message'] = 'Producto actualizado exitosamente';
-  $_SESSION['message_type'] = 'warning';
-  
-  header('Location: administrar.php');
+    $id = $_GET['id'];
+    $nombre = $_POST['nombre'];
+
+    $descripcion = $_POST['txtDescripcion'];
+    $precio = $_POST['txtPrecio'];
+    $cantidad = $_POST['txtStock'];
+
+    $imagen = $_FILES['txtImagen']["tmp_name"];
+    $nombreImagen = $_FILES['txtImagen']["name"];
+    $tipoImagen = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));
+    //$sizeImagen = $_FILES['txtImagen']["size"];
+    $directorio = "../img/Productos/Producto";
+
+   
+
+    if ($tipoImagen == "jpg" or $tipoImagen == "jpeg" or $tipoImagen == "png" or $tipoImagen == "webp") {
+
+        try {
+            unlink($nombre);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
+        $ruta = $directorio . $id . "." . $tipoImagen;
+
+        $query = "UPDATE productos set descripcion = '$descripcion', precio = '$precio', cantidad = '$cantidad', imagen = '$ruta' WHERE id_productos=$id";
+        mysqli_query($conn, $query);
+
+        if (move_uploaded_file($imagen, $ruta)) {
+
+            $_SESSION['message'] = 'Producto actualizado exitosamente';
+            $_SESSION['message_type'] = 'warning';
+            header('Location: administrar.php');
+        } else {
+            $_SESSION['message'] = 'Error al actualizar producto';
+            $_SESSION['message_type'] = 'danger';
+            header('Location: administrar.php');
+        }
+    } else {
+        $_SESSION['message'] = 'No se acepta ese formato de imagen';
+        $_SESSION['message_type'] = 'danger';
+    } 
+
 }
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -52,28 +82,23 @@ if (isset($_POST['update'])) {
  	background-repeat: no-repeat; background-size: cover;">
 
     <div class="container mt-1 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">
-        <h2 class="text-center mb-0">Editar Producto</h2>
+        <h2 class="text-center mb-2">Editar Producto</h2>
+        <?php if (isset($_SESSION['message'])) { ?>
+        <div class="p-2 alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
+            <?= $_SESSION['message'] ?>
+            <button type="button" class="btn-close pt-1" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php } ?>
 
-        <form action="edit.php?id=<?php echo $_GET['id']; ?>" class="formContact" method="POST">
+        <form action="edit.php?id=<?php echo $_GET['id']; ?>" class="formContact" enctype="multipart/form-data"
+            method="POST">
 
             <div class="mb-0" form-group>
                 <label>Imagen</label>
                 <div class="d-flex flex-sm-row flex-column justify-content-between align-items-center mb-1">
-                    <input type="file" class="form-control" id="imagen" style="width: 100%">
-                    <button class="btn btn-warning" type="button" id="boton" style="width: 100%">Agregar
-                        imagen</button>
+                    <input type="file" class="form-control" name="txtImagen" id="imagen" style="width: 100%" required>
                 </div>
-                <input type="text" class="form-control" name="txtImagen" value="<?php echo $row['imagen']; ?>"
-                    id=up-img>
-
-
-                <div class="progress mt-1">
-                    <div class="progress-bar progress-bar-striped bg-warning text-black" role="progressbar"
-                        style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id="progress-bar">
-                    </div>
-                </div>
-
-
+                <input type="hidden" class="form-control" name="nombre" value="<?php echo $row['imagen']; ?>" id=up-img>
             </div>
 
             <div class="mb-3" form-group>
@@ -107,7 +132,7 @@ if (isset($_POST['update'])) {
         </h5>
     </div>
 
-    <script type="module" src="../js/uploadImages.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
