@@ -58,10 +58,20 @@
     <main>
         <div class="encabezado">
             <div class="container text center">
+            
                 <div class="bg-info rounded-3 text center">
                     <h2 style="text-align: center;">LISTADO DE PELICULAS</h2>
                 </div>
+                <?php if (isset($_SESSION['message'])) { ?>
+                <div class="p-2 alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show mx-auto" role="alert"
+                    style="width: 400px;">
+                    <?= $_SESSION['message']?>
+                    <button type="button" class="btn-close pt-1" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php session_unset(); } ?>
+                
                 <a href="moviesCreate.php" class="m-2 btn btn-success">Agregar película</a>           
+            
             </div>
         </div>
         <div class="table-responsive" >
@@ -70,6 +80,7 @@
                 
                     <thead>
                         <tr>
+                            <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Descripcion</th>
                             <th scope="col">Género</th>
@@ -88,6 +99,7 @@
                             foreach ($datos as $dato){ ?>
                         <tr>
                             <?php 
+                            echo "<td><b>".$dato['id_movie']."</b></td>";
                             echo "<td><b>".$dato['nombre']."</b></td>";
                             echo "<td>".$dato['descripcion']."</td>";
                             echo "<td>".$dato['genero']."</td>";
@@ -111,9 +123,9 @@
                                         </div>
                                         <div class='modal-body'>
                                             <div style='text-align:center'>
-                                                <h4>¿Desea eliminar la pelicula?</h4>
-                                                <br>
-                                                <h4>".$dato['nombre']."</h4>
+                                                <a>¿Desea eliminar la pelicula</a>
+                                                <a><b>".$dato['nombre']."</b></a>
+                                                <a>?</a>
                                             </div>
                                         </div>
                                         <div class='modal-footer'>

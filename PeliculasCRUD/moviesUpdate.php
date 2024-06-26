@@ -8,15 +8,9 @@ if(isset($_GET['editar'])){
     $query = "SELECT * FROM movies WHERE id_movie='$id'";
     $resultado = $conn->query($query);
     $pelicula = $resultado->fetch_assoc();
-} else {
-    
-    header('Location: peliculasDetail.php');
-    var_dump($_GET);
-    exit;
 }
 
 ///////
-
 
 if($_POST){
     $id = $_POST['id_movie'];
@@ -35,8 +29,11 @@ if($_POST){
         $imgName = $imagen['name'];
         $tipoImagen = strtolower(pathinfo($imgName,PATHINFO_EXTENSION));
         $sizeImagen = $_FILES['imagen']['size'];
-        $directorio = "../img/peliculas";
-        $ruta = $directorio."/".uniqid().'.'.$tipoImagen;    
+        $directorio = "../img/peliculas/movie";
+        //$idPeli = $id['id_movie'] + 1;
+        $ruta = $directorio.$id.".".$tipoImagen;
+
+        //$ruta = $directorio."/".uniqid().'.'.$tipoImagen;    
         
         // Obtener la ruta de la imagen antigua desde la base de datos
         $stmt = $conn->prepare('SELECT imagen FROM movies WHERE id_movie = ?');
@@ -46,8 +43,8 @@ if($_POST){
         if (is_array($row) && isset($row['imagen'])) {
             $old_image_path = '../img/peliculas/' . $row['imagen'];
         } else {
-            // handle the error or default value
-            $old_image_path = ''; // or some other default value
+            // manejar el error o el valor predeterminado
+            $old_image_path = ''; // o algún otro valor predeterminado
         }
 
         // Eliminar la imagen antigua
@@ -62,30 +59,47 @@ if($_POST){
                 $stmt = $conn->prepare($query);
                 $stmt->bind_param("si", $ruta, $id);
                 $stmt->execute();
-                echo "<div class='alert alert-info'>Imagen guardada correctamente</div>";
+                $_SESSION['message'] = 'Imagen actualizada Exitosamente';
+                $_SESSION['message_type'] = 'danger';
+                header('Location: moviesAdmin.php');
             } else {
-                echo "<div class='alert alert-info'>Error al guardar la imagen</div>";
+                $_SESSION['message'] = 'Error al guardar la imagen';
+                $_SESSION['message_type'] = 'danger';
+                header('Location: moviesAdmin.php');
             }
         }else{
-            echo "<div class='alert alert-info'>No se acepta ese formato</div>";
+            $_SESSION['message'] = 'No se acepta ese formato de imagen';
+            $_SESSION['message_type'] = 'danger';
         }
     }else {
         $imgContent = null;
         $imgType = null;
         $imgName = null;
-        echo ('No se validó el campo');
+        $_SESSION['message'] = 'No se valido el campo';
+        $_SESSION['message_type'] = 'danger';
+        header('Location: moviesAdmin.php');
     }
 
+    //// actualiza los demas campos ////
+
     if(empty($nombre) && empty($descripcion) && empty($director)){
-        echo("Error al ingresar los datos");
+        $_SESSION['message'] = 'Error al ingresar datos';
+        $_SESSION['message_type'] = 'warning';
+        header('Location: moviesAdmin.php');
     } else {
         $query = "UPDATE movies SET nombre=?, descripcion=?, genero=?, calificacion=?, año=?, director=?, link=? WHERE id_movie=?";
         $stmt->close();
         $stmt = $conn->prepare($query);
         $stmt->bind_param("sssssssi", $nombre, $descripcion, $genero, $calificacion, $year, $director, $trailer, $id);
         $stmt->execute();
-        if($stmt){header('Location: moviesAdmin.php');}
-        else {echo("Error al actualizar la película");}
+        if($stmt){
+            $_SESSION['message'] = 'Se actualizó la pelicula exitosamente';
+            $_SESSION['message_type'] = 'success';
+            header('Location: moviesAdmin.php');}
+        
+        else {  $_SESSION['message'] = 'Error al actualizar la pelicula';
+                $_SESSION['message_type'] = 'danger';
+                header('Location: moviesAdmin.php');}
     }
     $stmt->close();
 }
@@ -93,7 +107,7 @@ if($_POST){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -110,9 +124,15 @@ if($_POST){
 <body class="bg-image" style="background-image: url('../img/posters80.jpg'); background-repeat: no-repeat; background-size:cover;">
     <div class="container text center">
         <div class="p-1 m-3 bg-info rounded-3">
-            <h2>Actualizar Película</h2>
-        </div>
-        <form action="peliculaUpdate.php" method="post" enctype="multipart/form-data" class="p-4 bg-white rounded">
+            <h2 style="text-align: center;">Actualizar Película</h2>
+            <?php if (isset($_SESSION['message'])) { ?>
+            <div class="p-2 alert text center alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
+                <?= $_SESSION['message'] ?>
+                <button type="button" class="btn-close pt-1" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php } ?>
+            </div>
+        <form action="moviesUpdate.php" method="post" enctype="multipart/form-data" class="p-4 bg-white rounded">
 
             <input type="hidden" name="id_movie" value="<?php echo $pelicula['id_movie'];?>">
             <div class="mb-3">
@@ -152,8 +172,8 @@ if($_POST){
                 <input type="text" class="form-control" id="link" name="link" value="<?php echo $pelicula['link'];?>">
             </div>
             <div class="mb-3" style="text-align: center;">
-                <button type="submit" class="btn btn-success">Actualizar</button>
                 <button type="button" class="btn btn-danger" onclick="location.href='moviesAdmin.php'">Cancelar</button>
+                <button type="submit" class="btn btn-success" name="update ">Actualizar</button>
             </div>
         </form>
     </div>

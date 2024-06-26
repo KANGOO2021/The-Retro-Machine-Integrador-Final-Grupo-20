@@ -14,6 +14,8 @@ if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST['crearPelicula'])) {
     //echo ("la ruta de la imagen s: $imagen");
     //$imagen2 = $_FILES["imagen"]["name"];
     // Validar carga de archivo
+    
+    
     if (!empty($_FILES['imagen'])) {
         $imagen = $_FILES['imagen'];
         $imgContent = file_get_contents($imagen['tmp_name']);
@@ -22,8 +24,15 @@ if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST['crearPelicula'])) {
         $imgName = $imagen['name'];
         $tipoImagen = strtolower(pathinfo($imgName,PATHINFO_EXTENSION));
         $sizeImagen = $_FILES['imagen']['size'];
-        $directorio = "../img/peliculas";
-        $ruta = $directorio."/".uniqid().'.'.$tipoImagen; // Generar un nombre único para la imagen
+        $directorio = "../img/peliculas/movie";
+        
+        $query = "SELECT id_movie FROM movies ORDER BY id_movie DESC LIMIT 1";
+        $idRegistro = $conn->query($query);
+
+        $idPeli = $idRegistro->fetch_assoc();
+        $idPeli = $idPeli['id_movie'] + 1;
+        $ruta = $directorio.$idPeli.".".$tipoImagen;
+        //$ruta = $directorio."/pelicula".$uniqid().'.'.$tipoImagen; // Generar un nombre único para la imagen
     
     // Mover la imagen desde el directorio temporal a la ruta deseada
        
@@ -41,7 +50,8 @@ if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST['crearPelicula'])) {
         }else{
             echo "<div class='alert alert-info'>No se acepta ese formato</div>";
         }
-    } else {
+    } 
+    else {
         $imgContent = null;
         $imgType = null;
         $imgName = null;
