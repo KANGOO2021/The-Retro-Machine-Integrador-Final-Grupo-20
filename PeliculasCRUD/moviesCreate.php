@@ -10,10 +10,6 @@ if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST['crearPelicula'])) {
     $anio = trim($_POST['anio']);
     $director = trim($_POST['director']);
     $link = trim($_POST['link']);
-    //$imagen = trim($_POST['imagen']);
-    //echo ("la ruta de la imagen s: $imagen");
-    //$imagen2 = $_FILES["imagen"]["name"];
-    // Validar carga de archivo
     
     
     if (!empty($_FILES['imagen'])) {
@@ -22,24 +18,17 @@ if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST['crearPelicula'])) {
         
         $imgType = $imagen['type'];
         $imgName = $imagen['name'];
-        $tipoImagen = strtolower(pathinfo($imgName,PATHINFO_EXTENSION));
-        $sizeImagen = $_FILES['imagen']['size'];
+        $tipoImagen = strtolower(pathinfo($imgName,PATHINFO_EXTENSION)); // tipo de imagen
+        //$sizeImagen = $_FILES['imagen']['size']; tamaño del archivo no lo usamos por ahora
         $directorio = "../img/peliculas/movie";
         
         $query = "SELECT id_movie FROM movies ORDER BY id_movie DESC LIMIT 1";
         $idRegistro = $conn->query($query);
-
         $idPeli = $idRegistro->fetch_assoc();
         $idPeli = $idPeli['id_movie'] + 1;
         $ruta = $directorio.$idPeli.".".$tipoImagen;
-        //$ruta = $directorio."/pelicula".$uniqid().'.'.$tipoImagen; // Generar un nombre único para la imagen
-    
+        
     // Mover la imagen desde el directorio temporal a la ruta deseada
-       
-        echo "<div class='alert alert-info'>type : $imgType</div>";
-        echo "<div class='alert alert-info'>nombre : $imgName</div>";
-        echo "<div class='alert alert-info'>Tipo : $tipoImagen</div>";
-        echo "<div class='alert alert-info'>Tamaño : $sizeImagen bytes</div>";
 
         if ($tipoImagen=="jpeg" or $tipoImagen=="jpg" or $tipoImagen=="webp"){
             if (move_uploaded_file($imagen['tmp_name'], $ruta)) {
@@ -64,11 +53,14 @@ if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST['crearPelicula'])) {
  
     // Ejecutar consulta SQL
     if ($stmt->execute()) {
-        echo '<h3>Pelicula Creada con exito!</h3>';
+        $_SESSION['message'] = 'Pelicula Creada con exito!';
+        $_SESSION['message_type'] = 'success';
         header('Location: moviesAdmin.php');
     } else {
-        echo '<h3>Upss! hubo un error!</h3>';
         echo $stmt->error;
+        $_SESSION['message'] = 'Ups hubo un error! echo $stmt->error';
+        $_SESSION['message_type'] = 'warning';
+        header('Location: moviesAdmin.php');
     }
 
     $stmt->close();
@@ -137,17 +129,17 @@ if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST['crearPelicula'])) {
                     <div class="formulario__grupo-input">
                         <select class="formulario__input form-control mb-2" name="genero" id="genero" required>
                             <option value="">Seleccione un género</option>
-                            <option value="comedia">Comedia</option>
-                            <option value="drama">Drama</option>
-                            <option value="aventura">Aventura</option>
-                            <option value="terror">Terror</option>
-                            <option value="ciencia ficcion">Ciencia Ficción</option>
-                            <option value="documentales">Documentales</option>
-                            <option value="catastrofes">Catastrofes</option>
-                            <option value="accion">Acción</option>
-                            <option value="fantasia">Fantasía</option>
-                            <option value="musical">Musical</option>
-                            <option value="suspenso">Suspenso</option>
+                            <option value="Comedia">Comedia</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Aventura">Aventura</option>
+                            <option value="Terror">Terror</option>
+                            <option value="Ciencia Ficción">Ciencia Ficción</option>
+                            <option value="Documentales">Documentales</option>
+                            <option value="Catastrofes">Catastrofes</option>
+                            <option value="Accion">Acción</option>
+                            <option value="Fantasia">Fantasía</option>
+                            <option value="Musical">Musical</option>
+                        <option value="Suspenso">Suspenso</option>
                         </select>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         <div class="valid-feedback">Bien</div>

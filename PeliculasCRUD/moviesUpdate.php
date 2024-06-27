@@ -132,7 +132,7 @@ if($_POST){
             </div>
             <?php } ?>
             </div>
-        <form action="moviesUpdate.php" method="post" enctype="multipart/form-data" class="p-4 bg-white rounded">
+        <form action="moviesUpdate.php" method="post" enctype="multipart/form-data" class="p-4 bg-white rounded needs-validation" novalidate>
 
             <input type="hidden" name="id_movie" value="<?php echo $pelicula['id_movie'];?>">
             <div class="mb-3">
@@ -143,9 +143,27 @@ if($_POST){
                 <label for="descripcion" class="form-label">Descripción</label>
                 <textarea class="form-control" id="descripcion" name="descripcion"><?php echo $pelicula['descripcion'];?></textarea>
             </div>
-            <div class="mb-3">
-                <label for="genero" class="form-label">Género</label>
-                <input type="text" class="form-control" id="genero" name="genero" value="<?php echo $pelicula['genero'];?>">
+            <div class="formulario__grupo mb-3" id="grupo__genero" form-group>
+                <label for="genero" class="formulario__label">Género</label>
+                <div class="formulario__grupo-input">
+                    <select class="formulario__input form-control mb-2" name="genero" id="genero" required">
+                        <option value=""><?php echo $pelicula['genero'];?></option>
+                        <option value="Comedia">Comedia</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Aventura">Aventura</option>
+                        <option value="Terror">Terror</option>
+                        <option value="Ciencia Ficción">Ciencia Ficción</option>
+                        <option value="Documentales">Documentales</option>
+                        <option value="Catastrofes">Catastrofes</option>
+                        <option value="Accion">Acción</option>
+                        <option value="Fantasia">Fantasía</option>
+                        <option value="Musical">Musical</option>
+                        <option value="Suspenso">Suspenso</option>
+                    </select>
+                    <div class="valid-feedback">Bien</div>
+                    <div class="invalid-feedback">Es necesario seleccionar el genero de la pelicula</div>
+                </div>
+                
             </div>
             <div class="mb-3">
                 <label for="calificacion" class="form-label">Calificación</label>
@@ -181,5 +199,26 @@ if($_POST){
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+            }, false)
+        })
+        })()
+    </script>
 </body>
-</html>
+</html>    

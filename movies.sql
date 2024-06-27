@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
-<<<<<<< HEAD
--- Tiempo de generación: 23-06-2024 a las 00:15:06
-=======
--- Tiempo de generación: 24-06-2024 a las 00:04:32
->>>>>>> d5547df4e26e9d6793277a6629e50d8ca05255d3
+-- Tiempo de generación: 27-06-2024 a las 16:50:56
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.3.6
 
@@ -22,11 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
-<<<<<<< HEAD
--- Base de datos: `retromachine`
-=======
 -- Base de datos: `retro_machine`
->>>>>>> d5547df4e26e9d6793277a6629e50d8ca05255d3
 --
 
 -- --------------------------------------------------------
@@ -37,42 +29,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `movies` (
   `id_movie` int NOT NULL,
-<<<<<<< HEAD
   `nombre` varchar(30) NOT NULL,
-  `descripcion` varchar(600) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `descripcion` varchar(600) NOT NULL,
   `genero` varchar(15) NOT NULL,
-  `calificacion` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `calificacion` varchar(20) NOT NULL,
   `año` smallint NOT NULL,
   `director` varchar(30) NOT NULL,
   `imagen` varchar(100) NOT NULL,
-  `link` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
-=======
-  `nombre` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `descripcion` varchar(600) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `genero` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `calificacion` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `año` smallint NOT NULL,
-  `director` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `imagen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `link` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
->>>>>>> d5547df4e26e9d6793277a6629e50d8ca05255d3
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `link` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `movies`
 --
 
 INSERT INTO `movies` (`id_movie`, `nombre`, `descripcion`, `genero`, `calificacion`, `año`, `director`, `imagen`, `link`) VALUES
-<<<<<<< HEAD
-(29, 'La guerra de las galaxias', 'Su trama describe las vivencias de un grupo de personajes que habitan en una galaxia ficticia e interactúan con elementos como «la Fuerza», un campo de energía metafísico y omnipresente que posee un «lado luminoso» impulsado por la sabiduría, la nobleza y la justicia y utilizado por los Jedi, y un «lado oscuro» usado por los Sith y provocado por la ira, el miedo, el odio y la desesperación', 'ciencia_ficcion', 'ATP', 1980, 'George Lucas', 'img/peliculas/6677408a576fe.jpg', 'https://www.youtube.com/watch?v=1g3_CFmnU7k&pp=ygUWc3RhciB3YXJzIDE5NzcgdHJhaWxlcg%3D%3D'),
-(33, 'Volver al futuro', 'El adolescente Marty McFly es amigo de Doc, un científico que ha construido una máquina del tiempo. Cuando los dos prueban el artefacto, un error fortuito hace que Marty llegue a 1955, año en el que sus padres iban al instituto y todavía no se habían conocido. Después de impedir su primer encuentro, Marty deberá conseguir que se conozcan y se enamoren, de lo contrario su existencia no sería posible', 'ciencia_ficcion', 'ATP', 1985, 'Robert Zemeckis', 'img/peliculas/667733f9e145e.webp', 'https://www.youtube.com/watch?v=ceMf9xtDA6U'),
-(34, 'Los cazadores del arca perdida', 'El arqueólogo Indiana Jones necesita encontrar el Arca de la Alianza, una reliquia bíblica que contiene los Diez Mandamientos y que convierte en invencible a su poseedor. Jones deberá adelantarse a los nazis, quienes también buscan el Arca.', 'aventura', 'ATP', 1981, 'Steven Spielberg', 'img/peliculas/667742bc369d9.webp', 'https://www.youtube.com/watch?v=ceMf9xtDA6U');
-=======
-(33, 'Volver al futuro', 'El adolescente Marty McFly es amigo de Doc, un científico que ha construido una máquina del tiempo. Cuando los dos prueban el artefacto, un error fortuito hace que Marty llegue a 1955, año en el que sus padres iban al instituto y todavía no se habían conocido. Después de impedir su primer encuentro, Marty deberá conseguir que se conozcan y se enamoren, de lo contrario su existencia no sería posible', 'ciencia ficcion', 'ATP', 1985, 'Robert Zemeckis', '../img/peliculas/6677a5eea3d9d.webp', 'https://www.youtube.com/watch?v=ceMf9xtDA6U'),
+(33, 'Volver al futuro', 'El adolescente Marty McFly es amigo de Doc, un científico que ha construido una máquina del tiempo. Cuando los dos prueban el artefacto, un error fortuito hace que Marty llegue a 1955, año en el que sus padres iban al instituto y todavía no se habían conocido. Después de impedir su primer encuentro, Marty deberá conseguir que se conozcan y se enamoren, de lo contrario su existencia no sería posible', 'Ciencia Ficción', 'ATP', 1981, 'Robert Zemeckis', '../img/peliculas/movie33.webp', 'https://www.youtube.com/watch?v=ceMf9xtDA6U'),
 (34, 'Los cazadores del arca perdida', 'El arqueólogo Indiana Jones necesita encontrar el Arca de la Alianza, una reliquia bíblica que contiene los Diez Mandamientos y que convierte en invencible a su poseedor. Jones deberá adelantarse a los nazis, quienes también buscan el Arca.', 'aventura', 'ATP', 1981, 'Steven Spielberg', '../img/peliculas/6677a621bcd73.webp', 'https://www.youtube.com/watch?v=ceMf9xtDA6U'),
-(36, 'La guerra de las galaxias', 'La nave en la que viaja la princesa Leia es capturada por las tropas imperiales al mando del temible Darth Vader. Antes de ser atrapada, Leia consigue introducir un mensaje en su robot R2-D2, quien acompañado de su inseparable C-3PO logran escapar. Tras aterrizar en el planeta Tattooine son capturados y vendidos al joven Luke Skywalker, quien descubrirá el mensaje oculto que va destinado a Obi Wan Kenobi, maestro Jedi a quien Luke debe encontrar para salvar a la princesa.', 'ciencia ficcion', 'ATP', 1980, 'George Lucas', '../img/peliculas/66777df3b989a.jpg', 'https://www.youtube.com/watch?v=1g3_CFmnU7k&t=4s&pp=ygUWc3RhciB3YXJzIDE5NzcgdHJhaWxlcg%3D%3D'),
-(37, 'Star Wars El retorno de Jedi', 'Luke Skywalker, ahora un experimentado caballero Jedi, intenta descubrir la identidad de Darth Vader.', 'ciencia ficcion', 'ATP', 1983, 'Richard Marquand', '../img/peliculas/667782c3bd943.webp', 'https://www.youtube.com/watch?v=Q4xMJxTaToQ'),
-(38, 'E.T.', 'Un pequeño extraterrestre de otro planeta queda abandonado en la Tierra cuando su nave se olvida de él. Está completamente solo y asustado hasta que Elliott, un niño de nueve años, lo encuentra y decide esconderlo en su casa para protegerlo. El chico y sus hermanos intentarán encontrar la forma de devolver al extraterrestre a su planeta antes de que lo encuentren los científicos y la policía.', 'ciencia ficcion', 'ATP', 1982, 'Steven Spielberg', '../img/peliculas/6677837216045.jpg', 'https://www.youtube.com/watch?v=p4vSher2e3A'),
+(37, 'Star Wars El retorno de Jedi', 'Luke Skywalker, ahora un experimentado caballero Jedi, intenta descubrir la identidad de Darth Vader.', 'ciencia ficcion', 'ATP', 1983, 'Richard Marquand', '../img/peliculas/6678c518bacb2.webp', 'https://www.youtube.com/watch?v=Q4xMJxTaToQ'),
+(38, 'E.T.', 'Un pequeño extraterrestre de otro planeta queda abandonado en la Tierra cuando su nave se olvida de él. Está completamente solo y asustado hasta que Elliott, un niño de nueve años, lo encuentra y decide esconderlo en su casa para protegerlo. El chico y sus hermanos intentarán encontrar la forma de devolver al extraterrestre a su planeta antes de que lo encuentren los científicos y la policía.', 'ciencia ficcion', 'ATP', 1982, 'Steven Spielberg', '../img/peliculas/6678c52cb4f32.jpg', 'https://www.youtube.com/watch?v=p4vSher2e3A'),
 (39, 'The Terminator', 'En el año 2029 las máquinas dominan el mundo. Los rebeldes que luchan contra ellas tienen como líder a John Connor, un hombre que nació en los años ochenta. Para eliminarlo y así acabar con la rebelión, las máquinas envían al pasado el robot Terminator con la misión de matar a Sarah Connor, la madre de John, e impedir así su nacimiento. Sin embargo, un hombre del futuro intentará protegerla', 'ciencia ficcion', '13', 1984, 'James Cameron', '../img/peliculas/66778b118dc1c.jpeg', 'https://www.youtube.com/watch?v=k64P4l2Wmeg&t=55s'),
 (40, 'Karate Kid', 'Daniel llega a Los Ángeles de la costa este y enfrenta la difícil tarea de hacer nuevos amigos. Sin embargo, se convierte en el blanco del acoso de los Cobras, una amenazadora pandilla de estudiantes de karate, cuando inicia una relación con Ali, la ex novia del líder de los Cobras. Deseoso de defenderse e impresionar a su nueva novia, pero temeroso de enfrentar a la peligrosa pandilla, Daniel le pide a su conserje Miyagi, un maestro de las artes marciales, que le enseñe karate', 'accion', 'ATP', 1984, 'John G. Avildsen', '../img/peliculas/66778bd34b48d.jpg', 'https://www.youtube.com/watch?v=r_8Rw16uscg'),
 (41, 'La historia sin fin', 'Un día, Bastian entra a una librería donde encuentra un misterioso libro que a pesar de las advertencias del dueño, decide leerlo. Es entonces cuando Bastian se introduce en un mundo fantástico, repleto de seres extraordinarios', 'fantasia', 'ATP', 1984, 'Wolfgang Petersen', '../img/peliculas/66778c3b22764.jpg', 'https://www.youtube.com/watch?v=jKWGgvs_Agk'),
@@ -84,8 +59,8 @@ INSERT INTO `movies` (`id_movie`, `nombre`, `descripcion`, `genero`, `calificaci
 (47, 'Volver al Futuro 3', 'Marty McFly sigue en 1955 y Doc ha retrocedido al año 1885, la época del salvaje oeste. Marty recibe una carta de Doc en la que le informa de que la máquina del tiempo está averiada y no puede volver al presente, pero que no le importa seguir en el pasado. Sin embargo, Marty descubre una tumba en la que lee que Doc murió en 1885 y decide ir a rescatar a su amigo', 'ciencia ficcion', 'ATP', 1990, 'Robert Zemeckis', '../img/peliculas/66778e7995f4f.webp', 'https://www.youtube.com/watch?v=3C8c3EoEfw4'),
 (48, 'Robocop', 'Un grupo de científicos utiliza los restos destrozados de un policía muerto para crear al mejor luchador contra el crimen: un robot indestructible. El experimento parece un éxito, pero el policía, a pesar de estar muerto, conserva la memoria y decide vengarse de sus asesinos', 'accion', '13', 1987, 'Paul Verhoeven', '../img/peliculas/66778edd81952.jpg', 'https://www.youtube.com/watch?v=gxJ3trgIsZ4'),
 (49, 'Batman', 'El caballero oscuro conocido como Batman defiende a la corrupta e insegura ciudad de Gotham de su enemigo principal, un payaso homicida conocido como Joker.', 'accion', '13', 1989, 'Tim Burton', '../img/peliculas/66778f74187a5.webp', 'https://www.youtube.com/watch?v=dgC9Q0uhX70'),
-(50, 'Rocky 2', 'Tras la dura pelea contra Apollo Creed y el embarazo de Adrien, Rocky ha colgado los guantes de boxeo. Sin embargo, su ingenuidad a la hora de llevar las finanzas le deja a él y a su familia en una situación difícil, por lo que considera aceptar la oferta de revancha de Apollo para una segunda pelea. Reticente, acepta cuando éste le llama cobarde, a pesar de las negativas de Adrien, quien teme que la pelea pueda acabar con el ya retirado Rocky', 'drama', '13', 1980, 'Sylvester Stallone', '../img/peliculas/66778fdc6979e.jpg', 'https://www.youtube.com/watch?v=A2P9ATb9Qx8');
->>>>>>> d5547df4e26e9d6793277a6629e50d8ca05255d3
+(50, 'Rocky 2', 'Tras la dura pelea contra Apollo Creed y el embarazo de Adrien, Rocky ha colgado los guantes de boxeo. Sin embargo, su ingenuidad a la hora de llevar las finanzas le deja a él y a su familia en una situación difícil, por lo que considera aceptar la oferta de revancha de Apollo para una segunda pelea. Reticente, acepta cuando éste le llama cobarde, a pesar de las negativas de Adrien, quien teme que la pelea pueda acabar con el ya retirado Rocky', 'drama', '13', 1980, 'Sylvester Stallone', '../img/peliculas/66778fdc6979e.jpg', 'https://www.youtube.com/watch?v=A2P9ATb9Qx8'),
+(53, 'La guerra de las galaxias', 'La nave en la que viaja la princesa Leia es capturada por las tropas imperiales al mando del temible Darth Vader. Antes de ser atrapada, Leia consigue introducir un mensaje en su robot R2-D2, quien acompañado de su inseparable C-3PO logran escapar. Tras aterrizar en el planeta Tattooine son capturados y vendidos al joven Luke Skywalker, quien descubrirá el mensaje oculto que va destinado a Obi Wan Kenobi, maestro Jedi a quien Luke debe encontrar para salvar a la princesa.', 'ciencia ficcion', 'ATP', 1980, 'George Lucas', '../img/peliculas/pelicula.jpg', 'https://youtu.be/IS9G-Xppa2w');
 
 --
 -- Índices para tablas volcadas
@@ -105,11 +80,7 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-<<<<<<< HEAD
-  MODIFY `id_movie` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-=======
-  MODIFY `id_movie` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
->>>>>>> d5547df4e26e9d6793277a6629e50d8ca05255d3
+  MODIFY `id_movie` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
