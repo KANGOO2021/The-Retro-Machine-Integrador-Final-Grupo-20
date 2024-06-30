@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2024 a las 20:35:23
+-- Tiempo de generación: 30-06-2024 a las 04:23:51
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `videojuego`
+-- Base de datos: `videojuegos`
 --
 
 -- --------------------------------------------------------
@@ -62,16 +62,6 @@ INSERT INTO `videojuegos` (`id`, `nombre`, `año_lanzamiento`, `link_juego`, `im
 --
 ALTER TABLE `videojuegos`
   ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `videojuegos`
---
-ALTER TABLE `videojuegos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
