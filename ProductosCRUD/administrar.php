@@ -48,7 +48,7 @@
                             <a class="nav-link active" aria-current="page" href="../dibujos.html">Dibujos</a>
                         </li>
                         <li>
-                            <a class="nav-link active" aria-current="page" href="../videojuegos.html">Videojuegos</a>
+                            <a class="nav-link active" aria-current="page" href="../VideojuegosCRUD/Administrar.php">Videojuegos</a>
                         </li>
 
                     </ul>

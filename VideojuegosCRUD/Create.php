@@ -1,5 +1,5 @@
 <?php
-session_start();
+#session_start();
 include("../db.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="mb-3">
                 <label for="imagen" class="form-label">URL de Imagen</label>
-                <input type="text" class="form-control" id="imagen" name="imagen" required>
+                <input type="file" class="form-control" id="imagen" name="imagen" required>
             </div>
             <button type="submit" class="btn btn-primary">Agregar Videojuego</button>
             <a href="Administrar.php" class="btn btn-secondary">Cancelar</a>

@@ -46,7 +46,7 @@
                             <a class="nav-link active" aria-current="page" href="../dibujos.html">Dibujos</a>
                         </li>
                         <li>
-                            <a class="nav-link active" aria-current="page" href="../videojuegos.html">Videojuegos</a>
+                            <a class="nav-link active" aria-current="page" href="../VideojuegosCRUD/Administrar.php">Videojuegos</a>
                         </li>
 
                     </ul>
@@ -58,20 +58,20 @@
     <main>
         <div class="encabezado">
             <div class="container text center">
-            
-                <div class="bg-info rounded-3 text center">
-                    <h2 style="text-align: center;">LISTADO DE PELICULAS</h2>
+                <div class="d-sm-flex justify-content-sm-between align-items-sm-center">
+                    <div class="bg-info rounded-3 text center">
+                        <h2 style="text-align: center;">LISTADO DE PELICULAS</h2>
+                    </div>
+                    <?php if (isset($_SESSION['message'])) { ?>
+                    <div class="p-2 alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show mx-auto" role="alert"
+                        style="width: 400px;">
+                        <?= $_SESSION['message']?>
+                        <button type="button" class="btn-close pt-1" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php session_unset(); } ?>
+                    
+                    <a href="moviesCreate.php" class="m-2 btn btn-success">Agregar película</a>           
                 </div>
-                <?php if (isset($_SESSION['message'])) { ?>
-                <div class="p-2 alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show mx-auto" role="alert"
-                    style="width: 400px;">
-                    <?= $_SESSION['message']?>
-                    <button type="button" class="btn-close pt-1" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <?php session_unset(); } ?>
-                
-                <a href="moviesCreate.php" class="m-2 btn btn-success">Agregar película</a>           
-            
             </div>
         </div>
         <div class="table-responsive" >

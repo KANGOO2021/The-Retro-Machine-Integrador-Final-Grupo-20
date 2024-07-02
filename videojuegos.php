@@ -1,4 +1,7 @@
 <?php
+
+include('db.php');
+/*
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -8,10 +11,11 @@ $conexion = new mysqli($servername, $username, $password, $dbname);
 
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error); 
-}
+}*/
 
 $sqli = "SELECT nombre, año_lanzamiento, link_juego, imagen FROM videojuegos";
-$result = $conexion->query($sqli);
+//$result = $conexion->query($sqli);
+$result = $conn->query($sqli);
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +69,8 @@ $result = $conexion->query($sqli);
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo '<div class="card text-center title" style="width:21rem;">';
-                    echo '<img class="card-img-top card-img" src="' . $row["imagen"] . '" alt="' . $row["nombre"] . '">';
+                    $rutaImagen = str_replace('../', '', $row['imagen']);
+                    echo '<img class="card-img-top card-img" src="' . $rutaImagen . '" alt="' . $row["nombre"] . '">';
                     echo '<div class="card-body">';
                     echo '<p class="card-title"><b>' . $row["nombre"] . '</b></p>';
                     echo '<span class="card-text m-2">' . $row["año_lanzamiento"] . '</span>';
@@ -76,7 +81,7 @@ $result = $conexion->query($sqli);
             } else {
                 echo "0 resultados";
             }
-            $conexion->close();
+            $conn->close();
             ?>
         </div>
     </main>

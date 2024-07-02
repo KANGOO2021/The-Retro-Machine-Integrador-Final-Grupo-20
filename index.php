@@ -49,7 +49,7 @@
                         </li>
                         <li>
                             <a class="nav-link active inicio" aria-current="page"
-                                href="videojuegos.html">Videojuegos</a>
+                                href="videojuegos.php">Videojuegos</a>
                         </li>
                         <li class="nav-item"><a class="nav-link active text-black btn-lg ms-2 color-login"
                                 aria-current="page" href="login.html">Login</a>

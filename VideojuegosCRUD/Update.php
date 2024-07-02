@@ -1,20 +1,21 @@
 <?php
-session_start();
+#session_start();
 include("../db.php");
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-
+    
     // Obtener los datos del videojuego
     $query = "SELECT * FROM videojuegos WHERE id = $id";
     $result = $conn->query($query);
-
+    
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         $nombre = $row['nombre'];
         $año_lanzamiento = $row['año_lanzamiento'];
         $link_juego = $row['link_juego'];
         $imagen = $row['imagen'];
+        
     } else {
         $_SESSION['message'] = 'Videojuego no encontrado.';
         $_SESSION['message_type'] = 'danger';
@@ -26,26 +27,57 @@ if (isset($_GET['id'])) {
     exit();
 }
 
+// Actualizar en la base de datos
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtener los datos del formulario
+    // Obtener los datos del formulario{}
+
+    $id = $_POST['id'];
     $nombre = $_POST['nombre'];
     $año_lanzamiento = $_POST['año_lanzamiento'];
     $link_juego = $_POST['link_juego'];
-    $imagen = $_POST['imagen'];
-
-    // Actualizar en la base de datos
-    $query = "UPDATE videojuegos SET nombre='$nombre', año_lanzamiento='$año_lanzamiento', link_juego='$link_juego', imagen='$imagen' WHERE id=$id";
     
-    if ($conn->query($query) === TRUE) {
-        $_SESSION['message'] = 'Videojuego actualizado correctamente.';
-        $_SESSION['message_type'] = 'success';
+    $imagen = $_FILES['imagen']["tmp_name"];
+    $nombreImagen = $_FILES['imagen']["name"];
+    $tipoImagen = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));
+    $directorio = "../img/Videojuegos/videojuego";
+   
+    if (!empty($imagen)) {
+        if ($tipoImagen == "jpg" or $tipoImagen == "jpeg" or $tipoImagen == "png" or $tipoImagen == "webp") {
+    /*
+            try { unlink($nombre);
+            } catch (\Throwable $th) { //throw $th;}
+    */
+            $ruta = $directorio.$id.".".$tipoImagen;
+        
+            $query = "UPDATE videojuegos SET nombre='$nombre', año_lanzamiento='$año_lanzamiento', link_juego='$link_juego', imagen='$ruta' WHERE id=$id";        
+            
+        } else {
+            $_SESSION['message'] = 'No se acepta ese formato de imagen';
+            $_SESSION['message_type'] = 'danger';
+        } 
     } else {
-        $_SESSION['message'] = 'Error al actualizar el videojuego: ' . $conn->error;
-        $_SESSION['message_type'] = 'danger';
+        $query = "UPDATE videojuegos SET nombre='$nombre', año_lanzamiento='$año_lanzamiento', link_juego='$link_juego' WHERE id=$id";
     }
 
-    header('Location: Administrar.php');
-    exit();
+    mysqli_query($conn, $query);
+    if (move_uploaded_file($imagen, $ruta)) {
+        $_SESSION['message'] = 'Imagen actualizada exitosamente';
+        $_SESSION['message_type'] = 'success';
+        
+    } else {
+        $_SESSION['message'] = 'Error al actualizar imagen';
+        $_SESSION['message_type'] = 'danger';
+        header('Location: administrar.php');
+    }
+    if ($conn->query($query)) {
+        $_SESSION['message'] = 'Videojuego actualizado exitosamente';
+        $_SESSION['message_type'] = 'warning';
+        header('Location: administrar.php');
+    } else {
+        $_SESSION['message'] = 'Error al actualizar videojuego';
+        $_SESSION['message_type'] = 'danger';
+        header('Location: administrar.php');
+    }
 }
 ?>
 
@@ -63,7 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h1 class="my-4">Editar Videojuego</h1>
-        <form action="edit.php?id=<?= $id ?>" method="POST">
+        <form action="Update.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?= $id?>">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?>" required>
@@ -80,7 +113,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="mb-3">
                 <label for="imagen" class="form-label">URL de Imagen</label>
-                <input type="text" class="form-control" id="imagen" name="imagen" value="<?= $imagen ?>" required>
+                <input type="file" class="form-control" id="imagen" name="imagen" value="<?= $imagen ?>">
+                <?php  if($imagen != ''){ ?>
+                    <p>Imagen Actual <img src="<?=$imagen ?>" alt="Imagen del videojuego" width="200"></p>
+                <?php } ?>
             </div>
             <button type="submit" class="btn btn-primary">Actualizar Videojuego</button>
             <a href="Administrar.php" class="btn btn-secondary">Cancelar</a>
