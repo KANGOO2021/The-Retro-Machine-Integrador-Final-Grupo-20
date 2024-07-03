@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Insertar en la base de datos
     $query = "INSERT INTO videojuegos (nombre, año_lanzamiento, link_juego, imagen) 
               VALUES ('$nombre', '$año_lanzamiento', '$link_juego', '$imagen')";
-    
+
     if ($conn->query($query) === TRUE) {
         $_SESSION['message'] = 'Videojuego agregado correctamente.';
         $_SESSION['message_type'] = 'success';
@@ -37,9 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body>
-    <div class="container">
-        <h1 class="my-4">Agregar Nuevo Videojuego</h1>
+
+<body style="background-image: url('../img/agregarVideoJuego.webp'); 
+	background-repeat: no-repeat; background-size: cover;">
+
+
+    <div class="container mt-4 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">
+        <h2 class="text-center m-3">Agregar Nuevo Videojuego</h2>
         <form action="Create.php" method="POST">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
@@ -60,6 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn btn-primary">Agregar Videojuego</button>
             <a href="Administrar.php" class="btn btn-secondary">Cancelar</a>
         </form>
+        <h5 class="text-center mt-3">
+            <a class="text-black" href="Administrar.php">Volver</a>
+        </h5>
     </div>
 </body>
 

@@ -27,7 +27,7 @@ if (isset($_POST['update'])) {
     //$sizeImagen = $_FILES['txtImagen']["size"];
     $directorio = "../img/Productos/Producto";
 
-   
+
 
     if ($tipoImagen == "jpg" or $tipoImagen == "jpeg" or $tipoImagen == "png" or $tipoImagen == "webp") {
 
@@ -55,8 +55,7 @@ if (isset($_POST['update'])) {
     } else {
         $_SESSION['message'] = 'No se acepta ese formato de imagen';
         $_SESSION['message_type'] = 'danger';
-    } 
-
+    }
 }
 
 ?>

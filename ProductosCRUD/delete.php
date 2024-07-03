@@ -14,5 +14,3 @@ if (isset($_GET['id'])) {
   $_SESSION['message_type'] = 'danger';
   header('Location: administrar.php');
 }
-
-?>

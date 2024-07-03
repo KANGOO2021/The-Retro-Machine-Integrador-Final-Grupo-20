@@ -25,7 +25,7 @@ if (isset($_POST['insert-product'])) {
         }
 
         $idRegistro = $conn->insert_id;
-        $ruta = $directorio.$idRegistro.".".$tipoImagen;
+        $ruta = $directorio . $idRegistro . "." . $tipoImagen;
 
         $actualizarImagen = $conn->query("update productos set imagen='$ruta' where id_productos=$idRegistro");
 
@@ -72,7 +72,7 @@ history.replaceState(null, null, location.pathname)
 	background-repeat: no-repeat; background-size: cover;">
 
 
-    <div class=" container mt-3 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">
+    <div class="container mt-3 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">
         <h2 class="text-center mb-4">Nuevo Producto</h2>
         <?php if (isset($_SESSION['message'])) { ?>
         <div class="p-2 alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">

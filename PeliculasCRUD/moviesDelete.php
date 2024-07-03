@@ -18,6 +18,3 @@ if (isset($_GET['delete'])) {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
-
-?>
-

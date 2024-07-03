@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `videojuegos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `año_lanzamiento` year(4) NOT NULL,
+  `año_lanzamiento` text(4) NOT NULL,
   `link_juego` varchar(255) NOT NULL,
   `imagen` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -40,18 +40,18 @@ CREATE TABLE `videojuegos` (
 --
 
 INSERT INTO `videojuegos` (`id`, `nombre`, `año_lanzamiento`, `link_juego`, `imagen`) VALUES
-(1, 'Super Mario Bros', '1985', 'https://vimm.net/vault/?p=play&id=834', 'img/Videojuegos/Super Mario Bros.png'),
-(2, 'Pac-Man', '1981', 'https://vimm.net/vault/?p=play&id=91396', 'img/Videojuegos/Pac-Man.png'),
-(3, 'Donkey Kong', '1981', 'https://vimm.net/vault/?p=play&id=257', 'img/Videojuegos/Donkey Kong.png'),
-(4, 'Pitfall!', '1982', 'https://vimm.net/vault/?p=play&id=91061', 'img/Videojuegos/Pitfall!.png'),
-(5, 'Tetris', '1984', 'https://vimm.net/vault/?p=play&id=880', 'img/Videojuegos/Tetris.png'),
-(6, 'Bubble Bobble', '1986', 'https://vimm.net/vault/?p=play&id=75578', 'img/Videojuegos/Bubble Bobble.png'),
-(7, 'Outrun', '1986', 'https://vimm.net/vault/?p=play&id=2227', 'img/Videojuegos/OutRun.png'),
-(8, '1942', '1984', 'https://vimm.net/vault/?p=play&id=4', 'img/Videojuegos/1942.png'),
-(9, 'Sonic The Hedgehog', '1991', 'https://vimm.net/vault/?p=play&id=84133', 'img/Videojuegos/Sonic The Hedgehog.png'),
-(10, 'Mortal Kombat 2', '1993', 'https://vimm.net/vault/?p=play&id=83998', 'img/Videojuegos/MortalKombat2.png'),
-(11, 'Street Fighter 2', '1994', 'https://vimm.net/vault/?p=play&id=2385', 'img/Videojuegos/Street Fighter 2.png'),
-(12, 'DOOM', '1993', 'https://vimm.net/vault/?p=play&id=41503', 'img/Videojuegos/DOOM.png');
+(1, 'Super Mario Bros', '1985', 'https://vimm.net/vault/?p=play&id=834', '../img/Videojuegos/Super Mario Bros.png'),
+(2, 'Pac-Man', '1981', 'https://vimm.net/vault/?p=play&id=91396', '../img/Videojuegos/Pac-Man.png'),
+(3, 'Donkey Kong', '1981', 'https://vimm.net/vault/?p=play&id=257', '../img/Videojuegos/Donkey Kong.png'),
+(4, 'Pitfall!', '1982', 'https://vimm.net/vault/?p=play&id=91061', '../img/Videojuegos/Pitfall!.png'),
+(5, 'Tetris', '1984', 'https://vimm.net/vault/?p=play&id=880', '../img/Videojuegos/Tetris.png'),
+(6, 'Bubble Bobble', '1986', 'https://vimm.net/vault/?p=play&id=75578', '../img/Videojuegos/Bubble Bobble.png'),
+(7, 'Outrun', '1986', 'https://vimm.net/vault/?p=play&id=2227', '../img/Videojuegos/OutRun.png'),
+(8, '1942', '1984', 'https://vimm.net/vault/?p=play&id=4', '../img/Videojuegos/1942.png'),
+(9, 'Sonic The Hedgehog', '1991', 'https://vimm.net/vault/?p=play&id=84133', '../img/Videojuegos/Sonic The Hedgehog.png'),
+(10, 'Mortal Kombat 2', '1993', 'https://vimm.net/vault/?p=play&id=83998', '../img/Videojuegos/MortalKombat2.png'),
+(11, 'Street Fighter 2', '1994', 'https://vimm.net/vault/?p=play&id=2385', '../img/Videojuegos/Street Fighter 2.png'),
+(12, 'DOOM', '1993', 'https://vimm.net/vault/?p=play&id=41503', '../img/Videojuegos/DOOM.png');
 
 --
 -- Índices para tablas volcadas
@@ -62,6 +62,10 @@ INSERT INTO `videojuegos` (`id`, `nombre`, `año_lanzamiento`, `link_juego`, `im
 --
 ALTER TABLE `videojuegos`
   ADD PRIMARY KEY (`id`);
+COMMIT;
+
+ALTER TABLE `videojuegos`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

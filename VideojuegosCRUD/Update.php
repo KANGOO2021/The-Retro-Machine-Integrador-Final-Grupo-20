@@ -4,18 +4,17 @@ include("../db.php");
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    
+
     // Obtener los datos del videojuego
     $query = "SELECT * FROM videojuegos WHERE id = $id";
     $result = $conn->query($query);
-    
+
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         $nombre = $row['nombre'];
         $año_lanzamiento = $row['año_lanzamiento'];
         $link_juego = $row['link_juego'];
         $imagen = $row['imagen'];
-        
     } else {
         $_SESSION['message'] = 'Videojuego no encontrado.';
         $_SESSION['message_type'] = 'danger';
@@ -35,26 +34,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
     $año_lanzamiento = $_POST['año_lanzamiento'];
     $link_juego = $_POST['link_juego'];
-    
+
     $imagen = $_FILES['imagen']["tmp_name"];
     $nombreImagen = $_FILES['imagen']["name"];
     $tipoImagen = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));
     $directorio = "../img/Videojuegos/videojuego";
-   
+
     if (!empty($imagen)) {
         if ($tipoImagen == "jpg" or $tipoImagen == "jpeg" or $tipoImagen == "png" or $tipoImagen == "webp") {
-    /*
+            /*
             try { unlink($nombre);
             } catch (\Throwable $th) { //throw $th;}
     */
-            $ruta = $directorio.$id.".".$tipoImagen;
-        
-            $query = "UPDATE videojuegos SET nombre='$nombre', año_lanzamiento='$año_lanzamiento', link_juego='$link_juego', imagen='$ruta' WHERE id=$id";        
-            
+            $ruta = $directorio . $id . "." . $tipoImagen;
+
+            $query = "UPDATE videojuegos SET nombre='$nombre', año_lanzamiento='$año_lanzamiento', link_juego='$link_juego', imagen='$ruta' WHERE id=$id";
         } else {
             $_SESSION['message'] = 'No se acepta ese formato de imagen';
             $_SESSION['message_type'] = 'danger';
-        } 
+        }
     } else {
         $query = "UPDATE videojuegos SET nombre='$nombre', año_lanzamiento='$año_lanzamiento', link_juego='$link_juego' WHERE id=$id";
     }
@@ -63,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (move_uploaded_file($imagen, $ruta)) {
         $_SESSION['message'] = 'Imagen actualizada exitosamente';
         $_SESSION['message_type'] = 'success';
-        
     } else {
         $_SESSION['message'] = 'Error al actualizar imagen';
         $_SESSION['message_type'] = 'danger';
@@ -92,11 +89,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body>
-    <div class="container">
+
+
+<body style="background-image: url('../img/editVideoJuego2.jpeg'); 
+	background-repeat: no-repeat; background-size: cover;">
+
+
+    <div class="container mt-3 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">
         <h1 class="my-4">Editar Videojuego</h1>
         <form action="Update.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<?= $id?>">
+            <input type="hidden" name="id" value="<?= $id ?>">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?>" required>
@@ -114,14 +116,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <label for="imagen" class="form-label">URL de Imagen</label>
                 <input type="file" class="form-control" id="imagen" name="imagen" value="<?= $imagen ?>">
-                <?php  if($imagen != ''){ ?>
-                    <p>Imagen Actual <img src="<?=$imagen ?>" alt="Imagen del videojuego" width="200"></p>
+                <?php if ($imagen != '') { ?>
+                <p class="mt-3">Imagen Actual <img src=" <?= $imagen ?>" alt="Imagen del videojuego" width="200">
+                </p>
                 <?php } ?>
             </div>
             <button type="submit" class="btn btn-primary">Actualizar Videojuego</button>
             <a href="Administrar.php" class="btn btn-secondary">Cancelar</a>
         </form>
+        <h5 class="text-center mt-3">
+            <a class="text-black" href="Administrar.php">Volver</a>
+        </h5>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

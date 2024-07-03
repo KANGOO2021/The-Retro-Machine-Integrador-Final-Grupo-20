@@ -45,11 +45,10 @@
                             <a class="nav-link active inicio" aria-current="page" href="peliculas.php">Peliculas</a>
                         </li>
                         <li>
-                            <a class="nav-link active inicio" aria-current="page" href="dibujos.html">Dibujos</a>
+                            <a class="nav-link active inicio" aria-current="page" href="videojuegos.php">Videojuegos</a>
                         </li>
                         <li>
-                            <a class="nav-link active inicio" aria-current="page"
-                                href="videojuegos.php">Videojuegos</a>
+                            <a class="nav-link active inicio" aria-current="page" href="dibujos.html">Dibujos</a>
                         </li>
                         <li class="nav-item"><a class="nav-link active text-black btn-lg ms-2 color-login"
                                 aria-current="page" href="login.html">Login</a>
@@ -137,10 +136,10 @@
                     <div class="d-flex flex-wrap justify-content-center gap-4">
 
                         <?php
-          $query = "SELECT * FROM productos";
-          $result_tasks = mysqli_query($conn, $query);    
+                        $query = "SELECT * FROM productos";
+                        $result_tasks = mysqli_query($conn, $query);
 
-          while($row = mysqli_fetch_assoc($result_tasks)) { ?>
+                        while ($row = mysqli_fetch_assoc($result_tasks)) { ?>
 
                         <div class="card text-center title" style="width:17rem;">
 
@@ -205,10 +204,16 @@
             <div class="row mx-md-5">
                 <div class="col-sm-3 text-sm-start mt-2">
                     <h4>The Retro Machine</h4>
+                    <div><a href="https://kangoo2021.github.io/Portfolio-CV/" target="_blank">Sergio Muñoz</a></div>
+                    <div><a href="https://www.linkedin.com/in/manuel-saquilán-55b44329" target="_blank">Manuel
+                            Saquilán</a></div>
+                    <div><a href="http://www.linkedin.com/in/sebastian-chamorro-addegree" target="_blank">Sebastián
+                            Chamorro</a>
+                    </div>
+                    <div><a href="" target="_blank">Mariángeles Fuigueroa</a>
+                    </div>
                     <span class="copyright">&copy; 2024</span>
-                    <span class="copyright">desarrollado por</span>
-                    <p class="mb-0 copyright">Sergio Muñoz</p>
-                    <address class="copyright">Buenos Aires - Argentina</address>
+                    <span class="copyright">desarrollado por Grupo 20</span>
                 </div>
                 <div class="col-sm-3 text-sm-start my-2">
                     <h4>Contacto</h4>

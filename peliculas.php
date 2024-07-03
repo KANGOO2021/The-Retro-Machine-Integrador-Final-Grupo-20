@@ -44,7 +44,8 @@ include('db.php');
                     </ul>
                 </div>
                 <form class="d-flex">
-                    <input class="form-control m-2" type="search" placeholder="Tu película retro favorita" aria-label="Search" id="search">
+                    <input class="form-control m-2" type="search" placeholder="Tu película retro favorita"
+                        aria-label="Search" id="search">
                     <a href="#" class="btn btn-success my-2" type="text">Buscar</a>
                 </form>
             </div>
@@ -53,31 +54,31 @@ include('db.php');
     </header>
     <main>
         <div class="peliculas-main d-flex flex-wrap justify-content-center" id="peliculas-main">
-        <?php $pelis= $conn->query("SELECT * FROM movies"); 
-                            $datos = $pelis->fetch_all(MYSQLI_ASSOC);
-                            foreach ($datos as $dato){ 
-                            $rutaImagen = str_replace('../', '', $dato['imagen']);    ?>
+            <?php $pelis = $conn->query("SELECT * FROM movies");
+            $datos = $pelis->fetch_all(MYSQLI_ASSOC);
+            foreach ($datos as $dato) {
+                $rutaImagen = str_replace('../', '', $dato['imagen']);    ?>
             <div class="card text-center title" style="width:17rem;">
-                <img class="card-img-top card-img" src='<?php echo $rutaImagen;?>' alt="Card image cap">
+                <img class="card-img-top card-img" src='<?php echo $rutaImagen; ?>' alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-title"><b><?php echo $dato['nombre'];?></b></p>
-                    <span class="card-text m-2"><?php echo $dato['año'];?></span>
-                    <a href="<?php echo $dato['link'];?>" target="_blank"
-                        class="btn btn-secondary trailer">Ver trailer</a>
+                    <p class="card-title"><b><?php echo $dato['nombre']; ?></b></p>
+                    <span class="card-text m-2"><?php echo $dato['año']; ?></span>
+                    <a href="<?php echo $dato['link']; ?>" target="_blank" class="btn btn-secondary trailer">Ver
+                        trailer</a>
                 </div>
             </div>
-            
-        <?php }   ?>
+
+            <?php }   ?>
         </div>
 
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 
     <script src="../js/buscador.js"></script>
-    
+
 </body>
 
 </html>

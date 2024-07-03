@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
 
     if ($conn->query($query) === TRUE) {
         $_SESSION['message'] = 'Videojuego eliminado correctamente.';
-        $_SESSION['message_type'] = 'success';
+        $_SESSION['message_type'] = 'danger';
     } else {
         $_SESSION['message'] = 'Error al eliminar el videojuego: ' . $conn->error;
         $_SESSION['message_type'] = 'danger';
@@ -22,4 +22,3 @@ if (isset($_GET['id'])) {
     header('Location: Administrar.php');
     exit();
 }
-?>

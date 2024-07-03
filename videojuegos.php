@@ -1,20 +1,8 @@
 <?php
 
 include('db.php');
-/*
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "videojuegos";
-
-$conexion = new mysqli($servername, $username, $password, $dbname);
-
-if ($conexion->connect_error) {
-    die("Conexión fallida: " . $conexion->connect_error); 
-}*/
 
 $sqli = "SELECT nombre, año_lanzamiento, link_juego, imagen FROM videojuegos";
-//$result = $conexion->query($sqli);
 $result = $conn->query($sqli);
 ?>
 
@@ -67,14 +55,14 @@ $result = $conn->query($sqli);
         <div class="videojuegos-main d-flex flex-wrap justify-content-center" id="videojuegos-main">
             <?php
             if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
+                while ($row = $result->fetch_assoc()) {
                     echo '<div class="card text-center title" style="width:21rem;">';
                     $rutaImagen = str_replace('../', '', $row['imagen']);
                     echo '<img class="card-img-top card-img" src="' . $rutaImagen . '" alt="' . $row["nombre"] . '">';
                     echo '<div class="card-body">';
                     echo '<p class="card-title"><b>' . $row["nombre"] . '</b></p>';
                     echo '<span class="card-text m-2">' . $row["año_lanzamiento"] . '</span>';
-                    echo '<a href="' . $row["link_juego"] . '" target="_blank" class="btn btn-success trailer">Jugar Online</a>';              
+                    echo '<a href="' . $row["link_juego"] . '" target="_blank" class="btn btn-success trailer">Jugar Online</a>';
                     echo '</div>';
                     echo '</div>';
                 }
@@ -85,7 +73,9 @@ $result = $conn->query($sqli);
             ?>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <script src="js/buscador.js"></script>
 </body>
 

@@ -18,7 +18,7 @@ fetch('https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1', option
         //console.log(datos.results)
 
         datos.results.forEach((elementos) => {
-         
+
 
             const contenedorCreado = document.createElement('div')
             contenedorCreado.innerHTML = `
@@ -35,6 +35,6 @@ fetch('https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1', option
 
 
         });
-    
-})
+
+    })
     
