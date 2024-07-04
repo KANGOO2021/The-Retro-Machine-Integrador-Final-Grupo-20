@@ -1,10 +1,10 @@
 <?php include("../db.php"); ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ingresar Película</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -134,11 +134,10 @@
                             <!-- MODAL  -->
                             <div class='modal fade' id='" . $dato['id_movie'] . "' data-bs-backdrop='static' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                 <div class='modal-dialog modal-sm modal-dialog-centered'>
-                                    <div class='modal-content'>
+                                    <div class='modal-content modal-eliminar2'>
                                         <div class='modal-header'>
                                             <h5 class='modal-title'>Eliminar Pelicula</h5>
                                             <button type='button' class='btn-close' data-bs-dismiss='modal'  aria-label='Close'>
-                                            <span aria-hidden='true'>&times;</span>
                                             </button>
                                         </div>
                                         <div class='modal-body'>
@@ -148,7 +147,7 @@
                                                 <a>?</a>
                                             </div>
                                         </div>
-                                        <div class='modal-footer'>
+                                        <div class='modal-footer d-flex justify-content-center'>
                                             <button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Cancelar</button>
                                             <a href='moviesDelete.php?delete=" . $dato['id_movie'] . " ' class='btn btn-success' data-toggle='modal' name='eliminar'>Eliminar</a></td>
 

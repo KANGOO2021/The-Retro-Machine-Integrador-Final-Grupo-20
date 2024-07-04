@@ -110,7 +110,7 @@ $result = $conn->query($query);
                             <div class="modal-dialog modal-dialog-centered ">
                                 <div class="modal-content modal-eliminar">
                                     <div class="modal-header d-flex justify-content-center">
-                                        <h5 class="modal-title">¿Seguro de eliminar elvideojuego
+                                        <h5 class="modal-title">¿Seguro de eliminar el videojuego
                                             con id <?php echo $row['id'] ?>?</h5>
                                     </div>
                                     <div class="modal-footer  d-flex justify-content-center">
