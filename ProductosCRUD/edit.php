@@ -27,36 +27,50 @@ if (isset($_POST['update'])) {
     //$sizeImagen = $_FILES['txtImagen']["size"];
     $directorio = "../img/Productos/Producto";
 
+    if (!empty($imagen)) {
 
+        if ($tipoImagen == "jpg" or $tipoImagen == "jpeg" or $tipoImagen == "png" or $tipoImagen == "webp") {
 
-    if ($tipoImagen == "jpg" or $tipoImagen == "jpeg" or $tipoImagen == "png" or $tipoImagen == "webp") {
+            try {
+                unlink($nombre);
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
 
-        try {
-            unlink($nombre);
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+            $ruta = $directorio . $id . "." . $tipoImagen;
 
-        $ruta = $directorio . $id . "." . $tipoImagen;
+            $query = "UPDATE productos set descripcion = '$descripcion', precio = '$precio', cantidad = '$cantidad', imagen = '$ruta' WHERE id_productos=$id";
+            mysqli_query($conn, $query);
 
-        $query = "UPDATE productos set descripcion = '$descripcion', precio = '$precio', cantidad = '$cantidad', imagen = '$ruta' WHERE id_productos=$id";
-        mysqli_query($conn, $query);
+            if (move_uploaded_file($imagen, $ruta)) {
 
-        if (move_uploaded_file($imagen, $ruta)) {
-
-            $_SESSION['message'] = 'Producto actualizado exitosamente';
-            $_SESSION['message_type'] = 'warning';
-            header('Location: administrar.php');
+                $_SESSION['message'] = 'Producto actualizado exitosamente';
+                $_SESSION['message_type'] = 'warning';
+                header('Location: administrar.php');
+            } else {
+                $_SESSION['message'] = 'Error al actualizar producto';
+                $_SESSION['message_type'] = 'danger';
+                header('Location: administrar.php');
+            }
         } else {
+            $_SESSION['message'] = 'No se acepta ese formato de imagen';
+            $_SESSION['message_type'] = 'danger';
+        }
+    } else {
+        if (empty($descripcion) && empty($cantidad) && empty($precio)){
             $_SESSION['message'] = 'Error al actualizar producto';
             $_SESSION['message_type'] = 'danger';
             header('Location: administrar.php');
+        }else{
+            $query = "UPDATE productos set descripcion = '$descripcion', precio = '$precio', cantidad ='$cantidad' WHERE id_productos=$id";
+            mysqli_query($conn, $query);
+            $_SESSION['message'] = 'Producto actualizado exitosamente';
+            $_SESSION['message_type'] = 'warning';
+            header('Location: administrar.php');
         }
-    } else {
-        $_SESSION['message'] = 'No se acepta ese formato de imagen';
-        $_SESSION['message_type'] = 'danger';
+        }
     }
-}
+
 
 ?>
 
@@ -95,7 +109,7 @@ if (isset($_POST['update'])) {
             <div class="mb-0" form-group>
                 <label>Imagen</label>
                 <div class="d-flex flex-sm-row flex-column justify-content-between align-items-center mb-1">
-                    <input type="file" class="form-control" name="txtImagen" id="imagen" style="width: 100%" required>
+                    <input type="file" class="form-control" name="txtImagen" id="imagen" style="width: 100%">
                 </div>
                 <input type="hidden" class="form-control" name="nombre" value="<?php echo $row['imagen']; ?>" id=up-img>
             </div>
