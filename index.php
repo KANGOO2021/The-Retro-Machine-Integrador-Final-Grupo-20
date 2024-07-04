@@ -210,8 +210,7 @@
                     <div><a href="http://www.linkedin.com/in/sebastian-chamorro-addegree" target="_blank">Sebastián
                             Chamorro</a>
                     </div>
-                    <div><a href="" target="_blank">Mariángeles Fuigueroa</a>
-                    </div>
+
                     <span class="copyright">&copy; 2024</span>
                     <span class="copyright">desarrollado por Grupo 20</span>
                 </div>
