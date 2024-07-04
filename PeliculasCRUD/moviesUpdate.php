@@ -80,14 +80,16 @@ if (isset($_POST['update'])) {
     <title>Actualizar Película</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="shortcut icon" href="../img/logo4.ico" type="../image/x-icon">
+    <link rel="shortcut icon" href="../img/logo4.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="css/recibirdatosmovies.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <script src="https://kit.fontawesome.com/ffa1940001.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-image" style="background-image: url('../img/posters80.jpg'); background-repeat: no-repeat; background-size:cover;">
+
+<body class="bg-image"
+    style="background-image: url('../img/posters80.jpg'); background-repeat: no-repeat; background-size:cover;">
 
 
     <div class="container text center mt-1 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">

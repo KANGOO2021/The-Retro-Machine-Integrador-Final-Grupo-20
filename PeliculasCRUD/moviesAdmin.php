@@ -15,11 +15,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <script src="https://kit.fontawesome.com/ffa1940001.js" crossorigin="anonymous"></script>
-    
+
 </head>
 
 <!--<body class="bg-image" style="background-image: url('../img/posters80.jpg'); background-repeat: no-repeat; background-size:cover;">-->
-<body >
+
+<body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark fixed-top d-flex nav-header" data-bs-theme="dark">
             <div class="container-fluid">
@@ -79,43 +80,43 @@
             </div>
         </div>
         <div class="table-responsive">
-        
-            
-                
-                <table class="table mt-3 table-bordered">
-                
-                    <thead>
 
-                        <tr class="text-center">
-                            <th scope="col">ID</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Descripcion</th>
-                            <th scope="col">Género</th>
-                            <th scope="col">Calificación</th>
-                            <th scope="col">Año</th>
-                            <th scope="col">Director</th>
-                            <th scope="col">Imagen</th>
-                            <th scope="col">Trailer</th>
-                            <th scope="col">Acciones</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $pelis = $conn->query("SELECT * FROM movies");
-                        $datos = $pelis->fetch_all(MYSQLI_ASSOC);
-                        foreach ($datos as $dato) { ?>
-                        <tr>
-                            <?php
-                            echo "<td><b>" . $dato['id_movie'] . "</b></td>";
-                            echo "<td><b>" . $dato['nombre'] . "</b></td>";
-                            echo "<td>" . $dato['descripcion'] . "</td>";
-                            echo "<td>" . $dato['genero'] . "</td>";
-                            echo "<td>" . $dato['calificacion'] . "</td>";
-                            echo "<td>" . $dato['año'] . "</td>";
-                            echo "<td>" . $dato['director'] . "</td>";
-                            echo "<td><img src='" . $dato['imagen'] . "' alt='No hay imgen' style='width:150px'></td>";
-                            echo "<td><a href=" . $dato['link'] . " class='btn btn-success' target='_blank'>Trailer</a></td>";
-                            echo "<td>  <div class='d-sm-flex justify-content-sm-between align-items-sm-center'>
+
+
+            <table class="table mt-3 table-bordered">
+
+                <thead>
+
+                    <tr class="text-center">
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Género</th>
+                        <th scope="col">Calificación</th>
+                        <th scope="col">Año</th>
+                        <th scope="col">Director</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Trailer</th>
+                        <th scope="col">Acciones</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $pelis = $conn->query("SELECT * FROM movies");
+                    $datos = $pelis->fetch_all(MYSQLI_ASSOC);
+                    foreach ($datos as $dato) { ?>
+                    <tr>
+                        <?php
+                        echo "<td><b>" . $dato['id_movie'] . "</b></td>";
+                        echo "<td><b>" . $dato['nombre'] . "</b></td>";
+                        echo "<td>" . $dato['descripcion'] . "</td>";
+                        echo "<td>" . $dato['genero'] . "</td>";
+                        echo "<td>" . $dato['calificacion'] . "</td>";
+                        echo "<td>" . $dato['año'] . "</td>";
+                        echo "<td>" . $dato['director'] . "</td>";
+                        echo "<td><img src='" . $dato['imagen'] . "' alt='No hay imgen' style='width:150px'></td>";
+                        echo "<td><a href=" . $dato['link'] . " class='btn btn-success' target='_blank'>Trailer</a></td>";
+                        echo "<td>  <div class='d-sm-flex justify-content-sm-between align-items-sm-center'>
                                             <div style='display: inline-block; margin: 0 10px;'><a data-bs-toggle='modal' data-bs-target='#" . $dato['id_movie'] . "' ><svg
                                                         xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='red'
                                                         class='bi bi-trash3-fill' viewBox='0 0 16 16'>
@@ -156,13 +157,13 @@
                                 </div>
                             </div>
                             </td>";
-                        }
-                            ?>
-                        </tr>
+                    }
+                        ?>
+                    </tr>
 
-                    </tbody>
-                </table>
-            
+                </tbody>
+            </table>
+
         </div>
 
 
