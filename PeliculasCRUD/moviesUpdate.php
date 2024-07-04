@@ -87,11 +87,11 @@ if (isset($_POST['update'])) {
 
     <script src="https://kit.fontawesome.com/ffa1940001.js" crossorigin="anonymous"></script>
 </head>
-<!--<body class="bg-image" style="background-image: url('../img/posters80.jpg'); background-repeat: no-repeat; background-size:cover;">-->
+<body class="bg-image" style="background-image: url('../img/posters80.jpg'); background-repeat: no-repeat; background-size:cover;">
 
-<body class="bg-image">
-    <div class="container text center">
-        <div class="p-1 m-3 bg-info rounded-3">
+
+    <div class="container text center mt-1 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">
+        <div class="p-1 m-3 rounded-3">
             <h2 style="text-align: center;">Actualizar Película</h2>
             <?php if (isset($_SESSION['message'])) { ?>
             <div class="p-2 alert text center alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show"
@@ -184,7 +184,7 @@ if (isset($_POST['update'])) {
                 <input type="text" class="form-control" id="link" name="link" value="<?php echo $pelicula['link']; ?>">
             </div>
             <div class="mb-3" style="text-align: center;">
-                <button type="button" class="btn btn-danger" onclick="location.href='moviesAdmin.php'">Cancelar</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='moviesAdmin.php'">Volver</button>
                 <button type="submit" class="btn btn-success" name="update">Actualizar</button>
             </div>
         </form>

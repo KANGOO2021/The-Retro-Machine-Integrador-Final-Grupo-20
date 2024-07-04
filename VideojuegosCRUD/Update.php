@@ -87,6 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Editar Videojuego</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../img/logo4.ico" type="../image/x-icon">
+    <script src="https://kit.fontawesome.com/ffa1940001.js" crossorigin="anonymous"></script>
 </head>
 
 
@@ -95,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	background-repeat: no-repeat; background-size: cover;">
 
 
-    <div class="container mt-3 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">
+    <div class="container mt-1 bg-white p-3 rounded col-sm-8 col-lg-6 col-xl-5">
         <h1 class="my-4">Editar Videojuego</h1>
         <form action="Update.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $id ?>">
