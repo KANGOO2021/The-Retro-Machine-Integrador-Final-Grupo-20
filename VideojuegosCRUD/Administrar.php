@@ -54,20 +54,21 @@ $result = $conn->query($query);
 
 
     <div class="container" style="margin-top: 120px;">
-        <h1 class="my-5">Administrar Videojuegos</h1>
+        <div class="d-sm-flex justify-content-sm-between align-items-sm-center">
+            <h1 class="my-5">Administrar Videojuegos</h1>
 
-        <!-- Mensaje de sesión -->
-        <?php if (isset($_SESSION['message'])) { ?>
-            <div class="p-2 alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
-                <?= $_SESSION['message'] ?>
-                <button type="button" class="btn-close pt-1" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php session_unset();
-        } ?>
+            <!-- Mensaje de sesión -->
+            <?php if (isset($_SESSION['message'])) { ?>
+                <div class="p-2 alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
+                    <?= $_SESSION['message'] ?>
+                    <button type="button" class="btn-close pt-1" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php session_unset();
+            } ?>
 
-        <!-- Botón para agregar nuevo videojuego -->
-        <a href="Create.php" class="btn btn-success mb-4">Agregar Nuevo Videojuego</a>
-
+            <!-- Botón para agregar nuevo videojuego -->
+            <a href="Create.php" class="btn btn-success mb-4">Agregar Nuevo Videojuego</a>
+        </div>      
         <!-- Tabla de videojuegos -->
         <table class="table">
             <thead>
